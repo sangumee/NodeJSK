@@ -1,0 +1,1274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Node.js Technical Steering Committee meetings]]></title><description><![CDATA[Node.js Technical Steering Committee meetings]]></description><link>https://nodejs.org/en/</link><generator>metalsmith-feed</generator><lastBuildDate>Wed, 28 Jun 2017 01:39:41 GMT</lastBuildDate><atom:link href="https://nodejs.org/en/feed/tsc-minutes.xml" rel="self" type="application/rss+xml"/><author><![CDATA[Node.js Foundation]]></author><docs/><item><title><![CDATA[Node.js LTS team meeting of 06/18/2015]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><ul>
+<li>Joao Reis</li>
+<li>Julien Gilli</li>
+<li>Michael Dawson</li>
+<li>Steven Loomis</li>
+</ul>
+<h2 id="header-discussions">Discussions<a name="discussions" class="anchor" href="#discussions" aria-labelledby="header-discussions"></a></h2><h3 id="header-upcoming-releases">Upcoming releases<a name="upcoming-releases" class="anchor" href="#upcoming-releases" aria-labelledby="header-upcoming-releases"></a></h3><h4 id="header-node-v0-10-39">node v0.10.39<a name="node-v0-10-39" class="anchor" href="#node-v0-10-39" aria-labelledby="header-node-v0-10-39"></a></h4><p>Julien: What&#39;s left to do: I suggest to revert
+<a href="https://github.com/joyent/node/pull/25511">https://github.com/joyent/node/pull/25511</a>.</p>
+<p>Michael: We have another security release with logjam fixes scheduled for
+v0.12, so that&#39;s ok with me to move that until next couple of v0.10/v0.12
+releases.</p>
+<p>Julien: I might have time to start the release process for v0.10.29 today.
+Once v0.10 is released, I can move on to releasing v0.12.5.</p>
+<h4 id="header-node-v0-12-5">node v0.12.5<a name="node-v0-12-5" class="anchor" href="#node-v0-12-5" aria-labelledby="header-node-v0-12-5"></a></h4><p>Julien: We have <a href="https://github.com/joyent/node/pull/25517">a PR to upgrade npm to
+2.11.2</a>. It seems to be a small
+change from the current version, so I would advocate for landing that now.</p>
+<p>Michael: Playing devil&#39;s advocate: would it delay the OpenSSL upgrade? If so,
+then we could postpone it to 0.12.6. If the risk is low, and it&#39;s fairly quick
+to land it, I&#39;m ok with that.</p>
+<p>Julien: Breaking changes for v0.12: the OpenSSL upgrade prevents TLS clients
+to connect to servers that use DH params with keys that are too short to be
+safe.</p>
+<p>Michael: Yes, and deferring the change to prevent servers to use shorter keys
+until next release.</p>
+<h3 id="header-moving-this-weekly-call-to-the-lts-wg-call">Moving this weekly call to the LTS WG call<a name="moving-this-weekly-call-to-the-lts-wg-call" class="anchor" href="#moving-this-weekly-call-to-the-lts-wg-call" aria-labelledby="header-moving-this-weekly-call-to-the-lts-wg-call"></a></h3><p>Julien: We have <a href="https://github.com/nodejs/LTS/issues/6#issuecomment-112976451">a new
+doodle</a> to try
+to come up with the best time slot to have these meetings, please fill it out
+if you haven&#39;t yet.</p>
+<h3 id="header-having-more-than-one-person-managing-releases">Having more than one person managing releases<a name="having-more-than-one-person-managing-releases" class="anchor" href="#having-more-than-one-person-managing-releases" aria-labelledby="header-having-more-than-one-person-managing-releases"></a></h3><p>Julien: having only one person who manage releases is not sustainable, I would
+like to have a team of release managers for v0.10.x and v0.12.x releases, and
+future LTS releases.</p>
+<p>Julien: I&#39;ve made some good progress on documenting the release process and
+improving some of the build scripts and Jenkins jobs to make them usable by
+other people than me. Hopefully that will be ready not too long from now.</p>
+<p>Julien: In the meantime, I&#39;d like to raise that to the broader LTS group and
+see who would be interested in being a release manager.</p>
+<p>Steven: I have some experience with releases in the ICU project and other open
+source projects, so I can definitely help, even to review and give feedback on
+the release process.</p>
+<p>Julien: I&#39;ll create an issue in nodejs/LTS to gather initial feedback and see
+who could be interested.</p>
+<h3 id="header-deprecation-of-shorter-keys-in-dh-param-server-side">Deprecation of shorter keys in DH param server side<a name="deprecation-of-shorter-keys-in-dh-param-server-side" class="anchor" href="#deprecation-of-shorter-keys-in-dh-param-server-side" aria-labelledby="header-deprecation-of-shorter-keys-in-dh-param-server-side"></a></h3><p>Michael: The OpenSSL upgrade to 1.0.1o prevents clients from connecting to
+servers using DH parameters that have a key that is too small to be safe. We
+should deprecate passing DH params that are unsafe when creating TLS servers
+too. I suggested <a href="https://github.com/joyent/node/issues/25509#issuecomment-112596586">some changes to do that on
+GitHub</a>,
+could you please provide feedback on these changes?</p>
+<h3 id="header-transition-from-v0-12-to-next-converged-lts-release">Transition from v0.12 to next converged LTS release<a name="transition-from-v0-12-to-next-converged-lts-release" class="anchor" href="#transition-from-v0-12-to-next-converged-lts-release" aria-labelledby="header-transition-from-v0-12-to-next-converged-lts-release"></a></h3><p>Michael: Julien started documenting breaking changes between v0.12.x and
+what&#39;s currently in the converged repository. Julien, is there any way we can help?</p>
+<p>Julien: Documenting the changes is really the first step. What I need from you
+and other members of the LTS working group is to review this list and give
+feedback. Once we&#39;re confident that we have an accurate list of breaking
+changes, the next step is to reach out to various user communities and
+determine what we need to do to make the transition as smooth as possible.</p>
+<p>Michael: It seems that there were some productive discussions during Nodeconf
+about requirements from users regarding LTS releases.</p>
+<p>Julien: Yes, and there are other additional ways we can reach out to the
+broader community: leveraging the Node.js Advisory Board, reaching out to
+Joyent&#39;s Node.js Incubator participants, the broader community on GitHub, etc.
+We will need some coordination between a lot of entities within the Node.js
+project.</p>
+<p>Michael: I would suggest reaching out to nan maintainers to identify V8
+breaking changes that would be handled by nan.</p>
+<p>Julien: Sounds like a good idea!</p>
+<p>Michael: Maybe instead of commenting in an existing issue, Julien could create
+new issue on GitHub to get more attention with all details that he
+mentioned.</p>
+<p>Julien: agreed.</p>
+<p>Julien: One other thing that I&#39;d like to use to make the transition even
+smoother is release candidates. I had started some work around that a while
+ago and unfortunately I haven&#39;t had the time to continue working on it. I
+think that Rod Vagg did some work around that for io.js and it might be ready
+there. Anyway, having release candidates for the next cycle of LTS releases
+would probably make things easier.</p>
+<p>Michael: Definitely, this is a broader topic for the LTS working group that we
+should probably even consider separately.</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-06-18</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-06-18</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 18 Jun 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Node 0.10.X/0.12.X LTS team meeting 06/11/2015]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><ul>
+<li>Julien Gilli</li>
+<li>Alexis Campailla</li>
+<li>Michael Dawson</li>
+<li>Colin Ihrig</li>
+</ul>
+<h2 id="header-agenda">Agenda<a name="agenda" class="anchor" href="#agenda" aria-labelledby="header-agenda"></a></h2><ul>
+<li>Logjam/openssl upgrade</li>
+<li>Upgrade of libuv to 1.6.1</li>
+<li>First draft of breaking changes between io.js/Node 0.12</li>
+<li>Windows Installer Changes</li>
+</ul>
+<h2 id="header-minutes">Minutes<a name="minutes" class="anchor" href="#minutes" aria-labelledby="header-minutes"></a></h2><h3 id="header-logjam-openssl-upgrade">Logjam/openssl upgrade<a name="logjam-openssl-upgrade" class="anchor" href="#logjam-openssl-upgrade" aria-labelledby="header-logjam-openssl-upgrade"></a></h3><p>Michael: Expect OpenSSL upgrade imminently. Just drop support for smaller size. Do we expect that to break users?</p>
+<p>Michael: should also consider including:</p>
+<ul>
+<li><a href="https://github.com/nodejs/node/pull/1739">https://github.com/nodejs/node/pull/1739</a></li>
+<li><a href="https://github.com/nodejs/node/pull/1831">https://github.com/nodejs/node/pull/1831</a></li>
+<li><a href="https://github.com/joyent/node/issues/25366">https://github.com/joyent/node/issues/25366</a>  (checked and docs for io.js indicate modp1 is still there)</li>
+</ul>
+<p>Michael: Stewart on my team has volunteered to create a PR against Node.js to upgrade OpenSSL.</p>
+<h3 id="header-libuv-upgrade-to-1-6-1">Libuv upgrade to 1.6.1<a name="libuv-upgrade-to-1-6-1" class="anchor" href="#libuv-upgrade-to-1-6-1" aria-labelledby="header-libuv-upgrade-to-1-6-1"></a></h3><p>Julien: Libuv PR, fixes annoying issue on OSX 10. Worth reviewing soon.</p>
+<p>Colin: PR already landed in io.js</p>
+<p>Julien: top priority to review that ABI/API hasn.t changed in a breaking way.</p>
+<p>Julien: Julien to try and review today, likely to be included in release for openssl upgrade</p>
+<h3 id="header-breaking-changes-between-io-js-and-node-0-12-x">Breaking changes between io.js and Node 0.12.X<a name="breaking-changes-between-io-js-and-node-0-12-x" class="anchor" href="#breaking-changes-between-io-js-and-node-0-12-x" aria-labelledby="header-breaking-changes-between-io-js-and-node-0-12-x"></a></h3><p>First draft of doc of breaking changes between 0.12 and next LTS.</p>
+<p>Julien: <a href="https://github.com/nodejs/node/wiki/Breaking-changes-between-v0.12-and-next-LTS-release">https://github.com/nodejs/node/wiki/Breaking-changes-between-v0.12-and-next-LTS-release</a></p>
+<p>Based on io.js issue tracker, joyent\node backport commit log. v8 breaking changes from release notes (?)</p>
+<p>Please review and comment on issue.</p>
+<h3 id="header-debug-port-issues">Debug port issues<a name="debug-port-issues" class="anchor" href="#debug-port-issues" aria-labelledby="header-debug-port-issues"></a></h3><p>Colin working to fix <a href="https://github.com/nodejs/node/pull/1949">https://github.com/nodejs/node/pull/1949</a> - new debug port for each worker.</p>
+<h3 id="header-windows-installer-changes">Windows installer changes<a name="windows-installer-changes" class="anchor" href="#windows-installer-changes" aria-labelledby="header-windows-installer-changes"></a></h3><p>Alexis: <a href="https://github.com/joyent/node/issues/5849">https://github.com/joyent/node/issues/5849</a> - currently a hybrid/broken, will submit PR to do full install for all users, to be added to next milestone</p>
+<p><a href="https://github.com/joyent/node/issues/25087">https://github.com/joyent/node/issues/25087</a>, same upgrade code used for 32/64 bit which is not good practice.  Can result in binaries from one (32/64) being put into the other.  Will move to use 2 upgrade codes, but this will break upgrade. Going to add manual action to check for old code and give message saying you cannot upgrade and that you should un-install and install again</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-06-11</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-06-11</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 11 Jun 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Minutes for the joyent/node TSC meeting of 06/04/2015]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><ul>
+<li>Colin Ihrig</li>
+<li>James Snell</li>
+<li>Julien Gilli</li>
+<li>Michael Dawson</li>
+</ul>
+<h2 id="header-discussions">Discussions<a name="discussions" class="anchor" href="#discussions" aria-labelledby="header-discussions"></a></h2><h3 id="header-weekly-calls">Weekly calls<a name="weekly-calls" class="anchor" href="#weekly-calls" aria-labelledby="header-weekly-calls"></a></h3><p>Julien: Do we want to keep doing weekly calls with the current contributors to
+joyent/node, or should all discussions be moved to the combined Node.js TSC
+meeting?</p>
+<p>James: Still has value in the short term. Maybe have them not every week but
+when needed?</p>
+<p>Michael: Maybe part of the LTS working group?</p>
+<p>Colin: Need to make sure we bring joyent/node issues to the combined TSC call,
+during the last two calls we had no discussions around joyent/node.</p>
+<p>Julien: For instance adding collaborators from io.js to joyent/node is a topic
+that I&#39;d like to discuss in the combined call.</p>
+<p>Michael: Actually another topic could be this very discussion that we have now
+about transitioning this weekly call into the LTS working group call.</p>
+<p>Action item: propose during next combined TSC call that this weekly call be
+transitioned to the LTS working group call.</p>
+<h3 id="header-upgrade-to-libuv-1-6-0">Upgrade to libuv 1.6.0<a name="upgrade-to-libuv-1-6-0" class="anchor" href="#upgrade-to-libuv-1-6-0" aria-labelledby="header-upgrade-to-libuv-1-6-0"></a></h3><p>Julien: the issue with OSX and tty is not severe to me. It&#39;s been present
+since v0.11.12, happens on OSX only and is specific to TTY handling.</p>
+<p>Michael: It seems that there&#39;s no need to rush the next v0.12.x release for
+this particular issue, we should aim at including the fix in the next one when
+it&#39;s ready.</p>
+<p>James, Colin, Julien: agreed.</p>
+<h3 id="header-security-report-from-hp">Security report from HP<a name="security-report-from-hp" class="anchor" href="#security-report-from-hp" aria-labelledby="header-security-report-from-hp"></a></h3><p>Julien: HP recently sent a security report mentioning potential security
+issues, but all of them seem to be false positives. Currently finishing
+investigations to be sure of that and communicating with them.</p>
+<h3 id="header-rc4-deprecation-fixes">RC4 deprecation fixes<a name="rc4-deprecation-fixes" class="anchor" href="#rc4-deprecation-fixes" aria-labelledby="header-rc4-deprecation-fixes"></a></h3><p>Julien: Did another round of review and we&#39;re making progress. James will be
+on vacation for the next 2 weeks so I&#39;ll do my best to take it from there.
+We&#39;ll revert what&#39;s landed in v0.10 so far to prevent this from holding back
+other changes, and submit a new single PR that contains all changes so that
+there&#39;s only one place to comment.</p>
+<p>Michael: If you need help with this just let us know.</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-06-04</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-06-04</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 04 Jun 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Node 0.10.X/0.12.X LTS team meeting 05/21/2015]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><ul>
+<li>Alexis Campailla</li>
+<li>James Snell</li>
+<li>Julien Gilli</li>
+<li>Michael Dawson</li>
+</ul>
+<h3 id="header-upcoming-releases">Upcoming releases<a name="upcoming-releases" class="anchor" href="#upcoming-releases" aria-labelledby="header-upcoming-releases"></a></h3><h4 id="header-v0-12-4">v0.12.4<a name="v0-12-4" class="anchor" href="#v0-12-4" aria-labelledby="header-v0-12-4"></a></h4><p>Looking to do a 0.12.4 release soon, end of this week or early next week to address:</p>
+<ul>
+<li>breaking v8 change <a href="https://github.com/joyent/node/issues/25324">https://github.com/joyent/node/issues/25324</a> - have PR ready</li>
+<li>Windows XP issues, have pull request from io.js, ready to pull over</li>
+</ul>
+<p>James also has RC4/Bar Mitzvah fix ready to go back in as well</p>
+<p>If time permits Alexis will do more investigation to identify what caused the XP issue</p>
+<h3 id="header-npm-testing">npm testing<a name="npm-testing" class="anchor" href="#npm-testing" aria-labelledby="header-npm-testing"></a></h3><p>Michael: update to npm 2.8.4 broke our test-npm target.  PR to fix is here: 
+<a href="https://github.com/joyent/node/issues/25290">https://github.com/joyent/node/issues/25290</a>.  Previously you could run tests without
+install but now install is required or tests don&#39;t run. </p>
+<p>Julien: we shoul talk with npm team on how to make sure the best way to run the tests</p>
+<p>Action: Michael to follow up with Forrest Norvell to discuss</p>
+<h3 id="header-lts">LTS<a name="lts" class="anchor" href="#lts" aria-labelledby="header-lts"></a></h3><p>James: Some concern over moving directly to next LTS based on converged repo, we may need
+to allow for a 0.14.X</p>
+<p>After discussion we agreed that we need to provide more information so that people have
+a better idea of what will be changing and the impact.  More specifically:</p>
+<ul>
+<li><p>gather list of breaking changes that will be in converged repo so that we can document
+and better communicate what will be different</p>
+</li>
+<li><p>reach out broadly to users to gather input on what their specific concerns might be
+in terms of an LTS release, including timing, content etc.</p>
+</li>
+</ul>
+<p>Overall we want to figure out what the right answer is and be open to that alternative.</p>
+<p>Action: James will push on these 2 aspects. </p>
+<h3 id="header-deprecation">Deprecation<a name="deprecation" class="anchor" href="#deprecation" aria-labelledby="header-deprecation"></a></h3><p>There was some discussion about how a platform would be deprecated.  One suggestion was that for 
+platforms that no longer have vendor support (ex Windows XP) we would deprecate.  It might also
+be appropriate for non-core platforms if there is nobody actively maintaining them.   It is a relatively
+complex issue so Alexis will open an issue on github (in the LTS repo) to discuss.</p>
+<h3 id="header-logjam">Logjam<a name="logjam" class="anchor" href="#logjam" aria-labelledby="header-logjam"></a></h3><p><a href="https://weakdh.org/">https://weakdh.org/</a></p>
+<p>James/Julien had run tools provided in report against Node 0.10.X and 0.12.X and they don&#39;t report an
+issue so its only the second part which applies.  This is related to allowing short key lengths. 
+There are already some patches in io.js that may be pulled across although we likely would want a 
+fallback option that they may not contain.  Based on the report we want to move this forward but
+its not urgent. </p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-05-21</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-05-21</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 21 May 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Minutes for the Node.js core team meeting of 05/07/2015]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><ul>
+<li>Alexis Campailla</li>
+<li>Colin Ihrig</li>
+<li>James Snell</li>
+<li>Julien Gilli</li>
+<li>Michael Dawson</li>
+<li>Robert Kowalski</li>
+</ul>
+<h2 id="header-discussions">Discussions<a name="discussions" class="anchor" href="#discussions" aria-labelledby="header-discussions"></a></h2><h3 id="header-upcoming-releases-v0-12-3-and-v0-10-39">Upcoming releases: v0.12.3 and v0.10.39<a name="upcoming-releases-v0-12-3-and-v0-10-39" class="anchor" href="#upcoming-releases-v0-12-3-and-v0-10-39" aria-labelledby="header-upcoming-releases-v0-12-3-and-v0-10-39"></a></h3><p>Julien: We should release 0.10.39 and 0.12.3 next week. A few important issues
+affecting many users.</p>
+<h4 id="header-npm-upgrade-to-2-8-4">npm upgrade to 2.8.4<a name="npm-upgrade-to-2-8-4" class="anchor" href="#npm-upgrade-to-2-8-4" aria-labelledby="header-npm-upgrade-to-2-8-4"></a></h4><p>Julien:
+Current npm version (2.7.4) is broken for a lot of users. npm 2.8.4 fixes a
+lot of issues.
+The reason why we didn&#39;t catch it, the current makefile doesn&#39;t trigger an
+error if you don&#39;t have CouchDB installed. It just gives a warning, that&#39;s
+easy to miss.</p>
+<p>Going to open a PR to make sure we catch these issues.</p>
+<p>Michael:
+Made some progress on Jenkins job that runs npm tests. Currently passes
+only on OSX. I&#39;ll keep working on it.</p>
+<p>Julien:
+CouchDB is the server for the npm registry. There are some tests that perform
+requests to CouchDB. If not installed, the tests don&#39;t run.
+CouchDB needs to be installed on each of the Jenkins machines.</p>
+<h4 id="header-latest-libuv-release-1-5-0">Latest libuv release (1.5.0)<a name="latest-libuv-release-1-5-0" class="anchor" href="#latest-libuv-release-1-5-0" aria-labelledby="header-latest-libuv-release-1-5-0"></a></h4><p>Julien:
+Will review changes to see if there are any important fixes, or changes to
+the API/ABI, to determine if we want this in the next release.</p>
+<h4 id="header-other-prs-for-the-upcoming-release">Other PRs for the upcoming release<a name="other-prs-for-the-upcoming-release" class="anchor" href="#other-prs-for-the-upcoming-release" aria-labelledby="header-other-prs-for-the-upcoming-release"></a></h4><p>Julien: Identified 5 different PRs that we could land before the release.
+Most of them already reviewed, we can land them pretty soon.
+<a href="https://github.com/joyent/node/pull/8875">https://github.com/joyent/node/pull/8875</a>
+<a href="https://github.com/joyent/node/pull/9448">https://github.com/joyent/node/pull/9448</a>
+<a href="https://github.com/joyent/node/issues/25137">https://github.com/joyent/node/issues/25137</a>
+<a href="https://github.com/joyent/node/pull/25100">https://github.com/joyent/node/pull/25100</a>
+<a href="https://github.com/joyent/node/pull/14193">https://github.com/joyent/node/pull/14193</a></p>
+<p>Another issue was with inconsistency of styles of invocations of makeCallback.
+Trevor working on it. Might not make it for the next 0.12 release.</p>
+<h4 id="header-rc4-deprecation">RC4 deprecation<a name="rc4-deprecation" class="anchor" href="#rc4-deprecation" aria-labelledby="header-rc4-deprecation"></a></h4><p>James, Julien:
+Need to address the problem if cyphers is undefined or null.
+Need to do a last pass on the pull request, to review tests/documentation.
+If we can nail this by end of week, we could make the next release next Tuesday.
+If we can&#39;t land the RC4 fixes, maybe we should revert the existing fixes for
+now. And do the release. And make the RC4 fixes in the next release.</p>
+<p>James: we should be able to finish the work this week.
+If delayed just a day, we&#39;ll wait.</p>
+<h4 id="header-more-release-discussions">More release discussions<a name="more-release-discussions" class="anchor" href="#more-release-discussions" aria-labelledby="header-more-release-discussions"></a></h4><p>Alexis: motivation for urgency?</p>
+<p>Julien: </p>
+<ul>
+<li>v8 lateral upgrade. A lot of impact on users. 
+<a href="https://github.com/joyent/node/pull/18206">https://github.com/joyent/node/pull/18206</a> </li>
+<li>Fixes on freeBSD
+<a href="https://github.com/joyent/node/pull/14819">https://github.com/joyent/node/pull/14819</a>
+<a href="https://github.com/joyent/node/issues/8540">https://github.com/joyent/node/issues/8540</a></li>
+</ul>
+<p>Colin: can we land this too? <a href="https://github.com/joyent/node/pull/9159">https://github.com/joyent/node/pull/9159</a></p>
+<p>Michael: Christian is away for a couple weeks. I will need to take over one of
+the PRs on the list.</p>
+<p>Julien: try to sprint until Friday. We only want to land stuff that meets the
+usual quality bar.</p>
+<p>James: once RC4 issues are fixed in 0.12, we should be able to land them in
+0.10.39.</p>
+<p>Julien: start in 0.10.39, then port to 0.12.</p>
+<p>Julien: Alexis, your PR should be added to to the 0.10.39 milestone.
+<a href="https://github.com/joyent/node/pull/25100">https://github.com/joyent/node/pull/25100</a></p>
+<p>Julien:
+For 10.39, there&#39;s also a fix for timers:
+<a href="https://github.com/joyent/node/pull/17203">https://github.com/joyent/node/pull/17203</a>
+First fix was already reviewed. Then I submitted a simpler fix. Looking for a
+second review.
+It shouldn&#39;t hold up the release, but it should be pretty safe and it fixes
+some annoying issues.</p>
+<h3 id="header-flaky-tests-support">Flaky tests support<a name="flaky-tests-support" class="anchor" href="#flaky-tests-support" aria-labelledby="header-flaky-tests-support"></a></h3><p>Alexis: io.js removed support for flaky tests. <a href="https://github.com/nodejs/node/pull/812">https://github.com/nodejs/node/pull/812</a>
+It looks like this issue might be slightly controversial.
+I am guessing they thought it was a mechanism for ignoring test failures in
+general, while it is only meant to support the automatic merge in
+node-accept-pull-request.</p>
+<p>Julien:
+In io.js they run CI to test every pull request, but they do the merge manually.
+io.js folks mentioned not been able to change the commit message as a downside
+of node-accept-pull-request.</p>
+<p>Let&#39;s communicate why it&#39;s useful.
+We should definitely log issues for flaky tests.</p>
+<p>Colin: how about policy for removing the test out of flaky -say- after a week?
+Somebody has to fix it. Or it should be deleted from the tests.</p>
+<p>Alexis, Julien: The moment we mark a test as flaky, we should open an issue
+and treat it as high priority.</p>
+<h3 id="header-node-js-api-working-group">Node.js API working group<a name="node-js-api-working-group" class="anchor" href="#node-js-api-working-group" aria-labelledby="header-node-js-api-working-group"></a></h3><p>Alexis: there was a request for participation in this working group. Do you
+know more about the charter of this working group?</p>
+<p>Julien:
+Dan Shaw has been trying to get together a group people for a standard on what
+an official Node.js API is.
+Maybe to enable people to implement another runtime that is compatible with
+Node.</p>
+<p>Is the working group about the external or the internal API?</p>
+<p>James to seek more clarifications on the email thread.</p>
+<h3 id="header-convergence-process">Convergence process<a name="convergence-process" class="anchor" href="#convergence-process" aria-labelledby="header-convergence-process"></a></h3><p>Alexis: in anticipation of the convergence work, where should we make changes?
+Node, io, and/or convergence repo?</p>
+<p>James: when we do our next major release, is it going to be based on
+the convergence repo? If so, that&#39;s where we should be landing the new
+features.</p>
+<p>Michael: But it won&#39;t be in stable working conditions for a while.
+So until we get the CI, we still do it in Node.</p>
+<p>If we make a change in joyent/node master, we can also port it to the
+convergence repo.</p>
+<p>Colin: what if we started cherry picking stuff to io.js?</p>
+<p>James: that works too.</p>
+<p>Julien: still a lot users of 0.12</p>
+<p>James: are we going to cut new releases from joyent\node master? </p>
+<p>Julien: not a lot of work in master at this time.</p>
+<p>Julien: Still waiting for io.js to vote on whether they want to merge.</p>
+<p>James: possible alternate routes. If they choose not to come into the
+foundation, we can still fork io.js and use it as our own converged stream.
+We still need to give it some thought.</p>
+<p>Michael: agree with Julien on deferring until io.js decision takes place.</p>
+<h3 id="header-triaging-issues">Triaging issues:<a name="triaging-issues" class="anchor" href="#triaging-issues" aria-labelledby="header-triaging-issues"></a></h3><p>Julien: how to do a better job at triaging issues coming in on github.
+948 issues open. A lot more coming in.
+Hard to triage them all, let alone fix them.
+Could we spend a little time every day to review the issues?</p>
+<p>Michael: schedule a slot to do everything together.</p>
+<p>Robert: using this process in CouchDB with very good results.</p>
+<p>Robert: we are using Jira.</p>
+<p>Alexis: increase the bandwidth by doing it in smaller groups or
+individually?</p>
+<p>Julien: good team exercise to do it together.</p>
+<p>Robert: let&#39;s just try it for a few weeks and see how it goes.</p>
+<p>Julien: schedule something just to try it out, see if it works.</p>
+<p>Everybody: ok :)</p>
+<p>Alexis: we&#39;ll need to find a way to use github effectively.</p>
+<p>Michael: I assume we can invite other people too.</p>
+<p>Julien: it&#39;s also a good way to onboard additional contributors.</p>
+<p>Schedule first meeting with existing collaborators. And if it works, we can
+extend it to more collaborators.</p>
+<p>Julien: any volunteers to lead this? If not I&#39;ll do it.</p>
+<p>Julien: maybe we can use Slack?</p>
+<p>Alexis: I vote for slack.</p>
+<p>Colin: +1 for Slack.</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-05-07</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-05-07</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 07 May 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Minutes for the Node.js core team meeting of 04/30/2015]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><ul>
+<li>Colin Ihrig.</li>
+<li>James Snell.</li>
+<li>Julien Gilli.</li>
+<li>Michael Dawson.</li>
+<li>Steven Loomis.</li>
+<li>Trevor Norris.</li>
+<li>Wyatt Preul.</li>
+</ul>
+<h2 id="header-discussions">Discussions<a name="discussions" class="anchor" href="#discussions" aria-labelledby="header-discussions"></a></h2><h3 id="header-upcoming-releases">Upcoming releases<a name="upcoming-releases" class="anchor" href="#upcoming-releases" aria-labelledby="header-upcoming-releases"></a></h3><h4 id="header-0-10-39">0.10.39<a name="0-10-39" class="anchor" href="#0-10-39" aria-labelledby="header-0-10-39"></a></h4><h5 id="header-fixes-to-the-bar-mitzvah-attacks">Fixes to the bar mitzvah attacks<a name="fixes-to-the-bar-mitzvah-attacks" class="anchor" href="#fixes-to-the-bar-mitzvah-attacks" aria-labelledby="header-fixes-to-the-bar-mitzvah-attacks"></a></h5><p>James: Will update recent ciphers list changes with some fixes.</p>
+<p>Julien: Will review as soon as possible.</p>
+<h5 id="header-tls-default-ciphers-not-used-if-ciphers-null-or-undefined">TLS default ciphers not used if ciphers null or undefined<a name="tls-default-ciphers-not-used-if-ciphers-null-or-undefined" class="anchor" href="#tls-default-ciphers-not-used-if-ciphers-null-or-undefined" aria-labelledby="header-tls-default-ciphers-not-used-if-ciphers-null-or-undefined"></a></h5><p>Julien: See <a href="https://github.com/joyent/node/pull/23947">https://github.com/joyent/node/pull/23947</a>. This must probably be
+considered before releasing the other changes to the default ciphers lists
+that have already landed in v0.10.</p>
+<h5 id="header-timer-fixes">Timer fixes<a name="timer-fixes" class="anchor" href="#timer-fixes" aria-labelledby="header-timer-fixes"></a></h5><p>Julien: Current PR here: <a href="https://github.com/joyent/node/pull/17203">https://github.com/joyent/node/pull/17203</a>.</p>
+<p>Julien: Need more feedback on whether to land this in v0.10.39. Recent changes
+to the timers module broke a lot of users in the past few v0.10.x releases, so
+we definitely need to be careful. This one seems safer than the previous ones
+though.</p>
+<h4 id="header-v0-12-3">v0.12.3<a name="v0-12-3" class="anchor" href="#v0-12-3" aria-labelledby="header-v0-12-3"></a></h4><h5 id="header-v8-lateral-upgrade-and-other-v8-fixes">V8 lateral upgrade and other V8 fixes<a name="v8-lateral-upgrade-and-other-v8-fixes" class="anchor" href="#v8-lateral-upgrade-and-other-v8-fixes" aria-labelledby="header-v8-lateral-upgrade-and-other-v8-fixes"></a></h5><p>Julien: <a href="https://github.com/joyent/node/pull/18206">https://github.com/joyent/node/pull/18206</a> landed, as well as the
+floating patch to fix let bindings in for loops
+(<a href="https://github.com/joyent/node/pull/23948">https://github.com/joyent/node/pull/23948</a>).</p>
+<h5 id="header-upgrade-npm-to-2-8-4">Upgrade npm to 2.8.4<a name="upgrade-npm-to-2-8-4" class="anchor" href="#upgrade-npm-to-2-8-4" aria-labelledby="header-upgrade-npm-to-2-8-4"></a></h5><p>Julien: There&#39;s a PR from Forrest that upgrades to npm 2.8.4. It fixes some
+significant issues (including security issues). We will want to include an
+upgraded version of npm with the next v0.12 release. Will review this PR and
+land if tests pass and that version is still what makes sense.</p>
+<p>Michael: We could probably create a Jenkins job to run the test-npm make target.</p>
+<h5 id="header-net-http-servers-with-implicit-binding-to-ipv6-addresses">net/HTTP servers with implicit binding to IPv6 addresses<a name="net-http-servers-with-implicit-binding-to-ipv6-addresses" class="anchor" href="#net-http-servers-with-implicit-binding-to-ipv6-addresses" aria-labelledby="header-net-http-servers-with-implicit-binding-to-ipv6-addresses"></a></h5><p>Colin: This issue was reported a while ago, and we probably need to make a
+decision about it sooner than later:
+<a href="https://github.com/joyent/node/issues/9195">https://github.com/joyent/node/issues/9195</a>.</p>
+<p>James: I would suggest updating the docs in 0.12, and wait to have more input
+to maybe make a change in behavior on master.</p>
+<p>Colin and ALL: agreed.</p>
+<h3 id="header-convergence-plan">Convergence plan<a name="convergence-plan" class="anchor" href="#convergence-plan" aria-labelledby="header-convergence-plan"></a></h3><p>James: Initial convergance plan: <a href="https://github.com/jasnell/dev-policy/pull/66">https://github.com/jasnell/dev-policy/pull/66</a>.</p>
+<p>James: nothing set in stone. Current plan:</p>
+<ul>
+<li>io.js organization transferred to nodejs organization. Will keep everything
+they&#39;ve already setup.</li>
+<li>joyent/node and other joyent/node-related repos will also be transferred to
+this organization.</li>
+<li>Both joyent/node and iojs/iojs repos would be under the foundation.</li>
+<li>For the converged repo, a fork of iojs repo would be created.</li>
+<li>New repo would be the next major release.</li>
+</ul>
+<p>James: Details for LTS policies still need to be figured out.</p>
+<p>James: Next work will be focused on the CI infrastructure.</p>
+<p>James: most importantly, need to agree that the merging process will be io.js
+forked and picking changes from joyent/node.</p>
+<p>James: Will also need to catalog other resources like twitter handles, domain
+names, etc.</p>
+<p><strong>Action Item:</strong> Julien to send James the list of assets used by the current
+CI platform.</p>
+<h3 id="header-intl">Intl<a name="intl" class="anchor" href="#intl" aria-labelledby="header-intl"></a></h3><p>James: io.js not OK with current intl support in v0.12 due to lack of
+modularity and issues around new command line switches.</p>
+<p>James: Putting together a plan that would make sense so that we can track that
+refactoring. Would be targeted to 0.13, and would make it more palatable for
+the io.js team.</p>
+<p>Steven: Concerns around the data size, confident that this proposal will
+improve the user experience.</p>
+<p>Steven: What it doesn&#39;t address is splitting the data in micro pieces. Not
+convinced by the use case for that, especially due to the amount of work
+required.</p>
+<p>James: In discussions witb Bert and others to know what the use cases are for
+the modularity.</p>
+<p>Michael: On board with being able to install data from npm, but not sure what
+the</p>
+<p>Steven: Two different types of usage: desktop of server. ICU point of view is
+to support user&#39;s language on the desktop and whatever comes on the wire in
+the server model.</p>
+<p>James, Steven: Working group about i18n will likely be created in the Node.js
+foundation, more discussions about that in upcoming convergence meetings.</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-04-30</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-04-30</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 30 Apr 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Minutes for the Node.js core team meeting of 04/24/2015]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><ul>
+<li>Alexis Campailla</li>
+<li>James Snell</li>
+<li>Julien Gilli</li>
+<li>Michael Dawson</li>
+<li>Steven Loomis</li>
+<li>TJ Fontaine</li>
+<li>Colin Ihrig</li>
+</ul>
+<h3 id="header-upcoming-releases">Upcoming releases<a name="upcoming-releases" class="anchor" href="#upcoming-releases" aria-labelledby="header-upcoming-releases"></a></h3><h4 id="header-v0-10-39">v0.10.39<a name="v0-10-39" class="anchor" href="#v0-10-39" aria-labelledby="header-v0-10-39"></a></h4><p>Discussion around removal of RC4 to address Bar Mitzva attack.  Progress
+being made, need to update to clarify precedence of command line 
+options (<a href="https://github.com/joyent/node/pull/19148">https://github.com/joyent/node/pull/19148</a>), update code/tests to 
+match this description (James), finalize release notes (Julien with input from all) 
+and then do one final review before release (all).   Important that we add
+tests to make sure merge with 0.12.X can be easily validated.</p>
+<h4 id="header-v0-12-3">v0.12.3<a name="v0-12-3" class="anchor" href="#v0-12-3" aria-labelledby="header-v0-12-3"></a></h4><p>Same discussion of removal of RC4 to address Bar Mitzva attack.  Just need
+to do commits in a way that facilitates merge from 0.10.X later</p>
+<p>Julien: looking at completing V8 lateral upgrade.  Will be v0.12.3 unless
+removal of RC4 is ready before it is.</p>
+<h3 id="header-internationalization">Internationalization<a name="internationalization" class="anchor" href="#internationalization" aria-labelledby="header-internationalization"></a></h3><p>James: io.js looking at Globalize as an alternative, because they would like
+it to be more modular in terms of how features (like collation)/languages get pulled in.</p>
+<p>If the two code bases are merged not including ICU would be a forced break.  Current
+understanding is that merged code base would be everything from both code bases.<br>If instead individual pieces are not going to be included then likely convergence working 
+group would need to build list to cover these pieces and work through an appropriate
+approach to deal with each one. </p>
+<p>In advance, we should start looking to see if we can make the inclusion of ICU more
+modular in a non breaking way.  Action: Michael to setup meeting with Steven/James
+to better understand dependencies between startup and V8 with respect to ICU.</p>
+<h3 id="header-windows-build-issues">Windows Build Issues<a name="windows-build-issues" class="anchor" href="#windows-build-issues" aria-labelledby="header-windows-build-issues"></a></h3><p>Alexis working on PR to fix some windows build issues, will do review on PR</p>
+<h3 id="header-jxcore">JxCore<a name="jxcore" class="anchor" href="#jxcore" aria-labelledby="header-jxcore"></a></h3><p>Michael/James talked to JxCore team to see if the C API that they have for separating
+core from Javascript engine and multi-isolate support might be starting point
+for Node.  JxCore team seems interested in collaborating.  Next logical step
+likely to form working group in Foundation to cover these two. </p>
+<p>TJ: We should also be looking at formalizing the internal layer (for example 
+TCPWrap) as part of introducing the required separation.</p>
+<h3 id="header-dev-policy">Dev Policy<a name="dev-policy" class="anchor" href="#dev-policy" aria-labelledby="header-dev-policy"></a></h3><p>James: looking to add some representation for user requirements. Proposed a working
+group, alternative may be an evolution of the advisory board into that role.</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-04-24</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-04-24</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Fri, 24 Apr 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Minutes for the Node.js core team meeting of 2015-04-16]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><ul>
+<li><a href="https://github.com/orangemocha">Alexis Campailla</a></li>
+<li><a href="https://github.com/cjihrig">Colin Ihrig</a></li>
+<li><a href="https://github.com/misterdjules">Julien Gilli</a></li>
+<li><a href="https://github.com/mhdawson">Michael Dawson</a></li>
+<li><a href="https://github.com/tjfontaine">TJ Fontaine</a></li>
+<li><a href="https://github.com/srl295">Steven R. Loomis</a> (scribe)</li>
+</ul>
+<h2 id="header-discussions">Discussions<a name="discussions" class="anchor" href="#discussions" aria-labelledby="header-discussions"></a></h2><h3 id="header-releases">Releases<a name="releases" class="anchor" href="#releases" aria-labelledby="header-releases"></a></h3><h4 id="header-v0-12-3">v0.12.3<a name="v0-12-3" class="anchor" href="#v0-12-3" aria-labelledby="header-v0-12-3"></a></h4><p>JGI: some progress , still slow.
+On v8 upgrade <a href="https://github.com/joyent/node/pull/9185">#9185</a>, made
+progress, trevor is working on until next week.
+Additional patches all in the comments.
+Help wanted to finish v8 integration.</p>
+<h5 id="header-profiler">Profiler<a name="profiler" class="anchor" href="#profiler" aria-labelledby="header-profiler"></a></h5><p>JGI: <a href="https://github.com/joyent/node/issues/14576">#14576</a> An issue -
+profiler causing v8 to stall?</p>
+<h5 id="header-freebsd-flag">FreeBSD flag<a name="freebsd-flag" class="anchor" href="#freebsd-flag" aria-labelledby="header-freebsd-flag"></a></h5><p>JGI: <a href="https://github.com/joyent/node/issues/8540">#8540</a> - FreeBSD
+flag. Input needed. The parameter is exposed to JS.</p>
+<p>JGI: finishing other P-1 issues before release.</p>
+<h3 id="header-other-discussions">Other discussions<a name="other-discussions" class="anchor" href="#other-discussions" aria-labelledby="header-other-discussions"></a></h3><h4 id="header-bar-mitzvah">Bar Mitzvah<a name="bar-mitzvah" class="anchor" href="#bar-mitzvah" aria-labelledby="header-bar-mitzvah"></a></h4><p>JGI: <a href="https://github.com/joyent/node/issues/15445">#15445</a> - Bar
+Mitzvah issue - 2 questions, feedback needed:</p>
+<ul>
+<li>Need to be able to get prior (insecure) behavior back if needed.</li>
+<li>How best to name the option?</li>
+</ul>
+<p>MD: Don&#39;t want to do this in perpetuity - RC4. Expand documentation.</p>
+<p>SRL: Should it be named &#39;enable-insecure&#39;?</p>
+<p>JGI: Always possible for users to specify custom cipher lists.</p>
+<p>TJ: Balance between platform users and application users.</p>
+<p>JGI: Need to get the main scenarios, come up with use cases first.</p>
+<p>MD: This is a tempoary fix, most people (hopefully) are using defaults.</p>
+<p>TJ: This setting is used more in minor versions, when people are
+bringing up [some version of an] app.</p>
+<h4 id="header-wrong-checksum-for-node-v0-12-2">Wrong checksum for node v0.12.2<a name="wrong-checksum-for-node-v0-12-2" class="anchor" href="#wrong-checksum-for-node-v0-12-2" aria-labelledby="header-wrong-checksum-for-node-v0-12-2"></a></h4><p>JGI: This issue will be investigated.</p>
+<h4 id="header-leap-second">Leap Second<a name="leap-second" class="anchor" href="#leap-second" aria-labelledby="header-leap-second"></a></h4><p>SRL: Existing issue: <a href="https://github.com/joyent/node/issues/9382">#9382</a></p>
+<p>SRL: Probably can do more testing.</p>
+<p>TJ / JGI: - did a test suitewith faketime. That may not work on windows.</p>
+<p>TJ: &quot;no known issues&quot; - some may want more documentation.</p>
+<p>TJ: Blog post, link to documentation/faq.</p>
+<p>TJ/AC: Clock used on windows for 0.10 is less precise but still monotonic.</p>
+<p>MD: Google response on v8 - &quot;thats a good question&quot;.</p>
+<p>TJ: This should be first class documentation.</p>
+<p>Action: SRL to open a new ticket. Document that Date.now != how timers work.
+(in <code>doc/timers</code>).</p>
+<h4 id="header-documentation-of-openssl-upgrades">Documentation of OpenSSL upgrades<a name="documentation-of-openssl-upgrades" class="anchor" href="#documentation-of-openssl-upgrades" aria-labelledby="header-documentation-of-openssl-upgrades"></a></h4><p>JGI: Need to document openssl upgrades:</p>
+<ul>
+<li>Upgrades can be confusing</li>
+<li>Often these upgrades are done in &#39;less than ideal&#39; situations
+(pressure to fix a critical issue).</li>
+</ul>
+<h4 id="header-documenting-how-to-upgrade-v8">Documenting how to upgrade v8<a name="documenting-how-to-upgrade-v8" class="anchor" href="#documenting-how-to-upgrade-v8" aria-labelledby="header-documenting-how-to-upgrade-v8"></a></h4><p>James and Julien are working on docs of how to do the update,.
+Missing some of the history, but at least it can be well understood.
+Ideally anyone on the team or community can understand how it is done.</p>
+<p>TJ: no specific home for this doc, in the wiki right now (link)</p>
+<p>JGI: Current state of the documentation may not include all floating patches.</p>
+<p>TJ: docs should live in the code eventually.
+JGI: may take another form.</p>
+<p>Action: SRL: document how to upgrade ICU.</p>
+<h4 id="header-joint-node-js-io-js-meetings">Joint node.js/io.js meetings<a name="joint-node-js-io-js-meetings" class="anchor" href="#joint-node-js-io-js-meetings" aria-labelledby="header-joint-node-js-io-js-meetings"></a></h4><p>CI: joint TC call.</p>
+<p>ALL: People don&#39;t want extra meetings - may be a little disorganized.</p>
+<p>TJ: - hard but necessary -- there&#39;s a lot of work to do around merging
+two projects:</p>
+<ul>
+<li>Need to work together to maintain stable release (LTS/platform etc)
+has to be comfortable integrating into the entire project.</li>
+<li>Innovation + ideals of LTS working group.  Required amount of tension.</li>
+<li>Hopefully good agendas.</li>
+</ul>
+<p>SRL: More of a concatenation than a merge. agenda and time management
+will become critical.</p>
+<p>TJ: Needs time management - &quot;we have 5 minutes to discuss this&quot;.</p>
+<p>ALL: Proposed time is &quot;Wednesday and it has been 1pm-2pm pacific since PDT
+kicked in (it was noon-1 before that).&quot;</p>
+<p>ALL: This time seemed good.</p>
+<p>SRL: Formal scheduling of agenda items?</p>
+<p>TJ: Yes, people should propose a time length when items come in.</p>
+<p>JGI: Two goals - 1. identify divergence, and 2. get used to other members.</p>
+<p>JGI: Maybe 15 minutes joint meeting, then individual meetings if needed.</p>
+<h4 id="header-call-for-help-triaging-incoming-bugs">Call for help triaging incoming bugs<a name="call-for-help-triaging-incoming-bugs" class="anchor" href="#call-for-help-triaging-incoming-bugs" aria-labelledby="header-call-for-help-triaging-incoming-bugs"></a></h4><p>JGI: Help wanted triaging incoming bugs.</p>
+<h4 id="header-crash-from-command-line-intl">Crash from command line (Intl)<a name="crash-from-command-line-intl" class="anchor" href="#crash-from-command-line-intl" aria-labelledby="header-crash-from-command-line-intl"></a></h4><p>SRL: investigating crash from command line
+<a href="https://github.com/joyent/node/issues/9361">#9361</a>.</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-04-16</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-04-16</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 16 Apr 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Minutes for the Node.js core team meeting of 04/09/2015]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><ul>
+<li>Alexis Campailla</li>
+<li>Colin Ihrig</li>
+<li>Julien Gilli</li>
+<li>James Snell</li>
+<li>Michael Dawson</li>
+<li>TJ Fontaine</li>
+</ul>
+<h2 id="header-discussions">Discussions<a name="discussions" class="anchor" href="#discussions" aria-labelledby="header-discussions"></a></h2><h3 id="header-agenda">Agenda<a name="agenda" class="anchor" href="#agenda" aria-labelledby="header-agenda"></a></h3><ul>
+<li>RC4 vulnerability.</li>
+<li>v0.12.3 status.</li>
+<li>dev policy sync before meeting.</li>
+</ul>
+<h3 id="header-rc4-vulnerability">RC4 vulnerability<a name="rc4-vulnerability" class="anchor" href="#rc4-vulnerability" aria-labelledby="header-rc4-vulnerability"></a></h3><p>We want to iterate a few more times before we release.</p>
+<p>James has a new set of PRs for review.</p>
+<p>Julien ran the ssl upgrade test, and found a potential security issue.</p>
+<p>There is an additional note for getLegacyCiphers, throwing for an unknown
+string.</p>
+<p>How do we want to release this? Is it separate, or should we include it along
+with a blog post and documentation about the changes?</p>
+<p>IBM security identified it as being important enough to have a fix.</p>
+<p>Are we doing our normal v0.12.3 gestation, or are we doing a v0.12.2 with only
+this fix?</p>
+<p>io.js updated their defaults a month ago.</p>
+<p>Continue conversation on email and make a decision on the release for Monday.</p>
+<p>This particular issue should be handled for v0.10.39, but for v0.12.3 we
+include what has been already landed.</p>
+<p>Potential Security Issue:</p>
+<ul>
+<li>Julien will send an email to security@ with a description for a discussion.</li>
+<li>Validate the concerns of this issue and determine if it should be included
+with the RC4 fix.</li>
+</ul>
+<p>IBM runs a lot of tests on multiple platforms for their releases, and the RC4
+fixes for v0.10 have been internally validated.</p>
+<p>James is looking at improving the SSL/TLS cipher test suite</p>
+<h3 id="header-v0-12-3">v0.12.3<a name="v0-12-3" class="anchor" href="#v0-12-3" aria-labelledby="header-v0-12-3"></a></h3><p>Not much has changed since last week, as many people were working on
+Foundation pieces.</p>
+<p>Many of the P-1 issues can be easily managed once we have more time.</p>
+<p>Are any small enough for inclusion before Monday.</p>
+<p>A FreeBSD fix still needs more iteration.</p>
+<p>Ideally we continue focusing on the RC4 and related security issues.</p>
+<p>No one has indicated being blocked on others.</p>
+<h3 id="header-release-candidate-work">Release Candidate work<a name="release-candidate-work" class="anchor" href="#release-candidate-work" aria-labelledby="header-release-candidate-work"></a></h3><p>Julien submitted a PR to describe the policy.</p>
+<p>Ideally running the release of v0.12.4 in this policy.</p>
+<p>Some platform providers are not sure about the RC portion will be useful for
+them.</p>
+<p>TJ would like to introduce the Yahoo team to Julien to see if they&#39;d be
+interested in release candidates.</p>
+<p>Also would be good to reach out to Forrest for npm mechanisms.</p>
+<p>node-gyp still relies on the internet.</p>
+<h3 id="header-windows-msi-install">Windows MSI install<a name="windows-msi-install" class="anchor" href="#windows-msi-install" aria-labelledby="header-windows-msi-install"></a></h3><p>We should look to unify on install.py and the location.</p>
+<p>Deployment on windows is particularly hard.</p>
+<p>Compilers for production deployments is odd.</p>
+<p>JXCore has an API/ABI shim and engine abstraction layer.</p>
+<h3 id="header-development-policy">Development Policy<a name="development-policy" class="anchor" href="#development-policy" aria-labelledby="header-development-policy"></a></h3><p>Meeting today at 12PM PDT.</p>
+<p>Work between James and Mikeal on describing the iojs policy and adding in the
+things that the Node.js core team cares about.</p>
+<p>Trying to walk the line and balance innovation and speed with stability.</p>
+<p>The core team needs to provide feedback, before and during the meeting.</p>
+<p>Convergence Working Group would merge the code bases between iojs and Node.js,
+in the mean time the projects would work independently.</p>
+<p>The potential release number would be 2.0.0.</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-04-09</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-04-09</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 09 Apr 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Minutes for the Node.js core team meeting of 03/26/2015]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><ul>
+<li>Alexis Campailla</li>
+<li>Colin Ihrig</li>
+<li>James Snell</li>
+<li>Julien Gilli</li>
+<li>Michael Dawson</li>
+<li>Robert Kowalski</li>
+<li>TJ Fontaine</li>
+<li>Trevor Norris</li>
+<li>Wyatt Preul</li>
+</ul>
+<h2 id="header-discussions">Discussions<a name="discussions" class="anchor" href="#discussions" aria-labelledby="header-discussions"></a></h2><h3 id="header-foundation-charter">Foundation charter<a name="foundation-charter" class="anchor" href="#foundation-charter" aria-labelledby="header-foundation-charter"></a></h3><p>TJ: We want to make sure that we&#39;re participating in this process.</p>
+<p>TJ: Now could be a good time for everyone to talk about tools they know that
+would work well to help the work done by the foundation.</p>
+<h3 id="header-benchmarks">Benchmarks<a name="benchmarks" class="anchor" href="#benchmarks" aria-labelledby="header-benchmarks"></a></h3><p>Michael: We&#39;d like to have tools to make sure there&#39;s no performance
+regression between releases.</p>
+<p>Michael: We could use <a href="https://github.com/acmeair/acmeair">https://github.com/acmeair/acmeair</a>, and there&#39;s a
+Node.js version: <a href="https://github.com/acmeair/acmeair-nodejs">https://github.com/acmeair/acmeair-nodejs</a>.</p>
+<p>Michael: Have talked to maintainer of acme-air and they are willing to
+collaborate, we could also get them to give us an intro to the benchmark if
+that makes sense.</p>
+<p>TJ: We also want a benchmark specifically for low-latency and high
+concurrency.</p>
+<p>TJ: How do we want to start with that? Also should assess what we already have.</p>
+<p>Michael: Might want to form a performance working group.</p>
+<p>Michael: Good idea to reach out to io.js too.</p>
+<p>TJ to forward to Michael contacts at Yahoo, Netflix and Paypal that might be
+interested in participating.</p>
+<h3 id="header-oob-osx">OOB OSX<a name="oob-osx" class="anchor" href="#oob-osx" aria-labelledby="header-oob-osx"></a></h3><p>v0.10.37 fixed an issue in kqueue regarding out of band data. The reporter
+never heard back from Apple, and no CVE  has been assigned. Could lead to a
+DOS scenario.</p>
+<h3 id="header-security-issue-in-vm-js">Security issue in vm.js<a name="security-issue-in-vm-js" class="anchor" href="#security-issue-in-vm-js" aria-labelledby="header-security-issue-in-vm-js"></a></h3><p>TJ: Got an email about a user concerned about the fact that the parent of a
+sliced buffer can be traversed across VMs.</p>
+<p>Trevor: this has been known for a while.</p>
+<p>TJ: sandbox is a not a security context sandbox, but more a &quot;programming
+sandbox&quot;.</p>
+<p>TJ: In my opinion, mostly a documentation bug on our part.</p>
+<h3 id="header-putting-a-link-to-ibm-node-js-sdk-on-nodejs-org">Putting a link to IBM Node.js SDK on nodejs.org<a name="putting-a-link-to-ibm-node-js-sdk-on-nodejs-org" class="anchor" href="#putting-a-link-to-ibm-node-js-sdk-on-nodejs-org" aria-labelledby="header-putting-a-link-to-ibm-node-js-sdk-on-nodejs-org"></a></h3><p>TJ: I don&#39;t have any objection. What link would we use?</p>
+<p>James: We have a landing page for this SDK for Node.js. Easiest thing would be
+to land to this page.</p>
+<p>TJ: I want to avoid confusion if the versions are not in sync between the two
+projects.</p>
+<p>James: We can make it clear on this landing page.</p>
+<p>TJ: Can the additional debugging stuff be upstreamed?</p>
+<p>Michael: We want to make that available, maybe via npm. Same for IDDE.</p>
+<p>TJ: Would be great to have the additional debugging support in the code base
+too, so that people can load core files from z platforms and do debugging.</p>
+<h2 id="header-releases">Releases<a name="releases" class="anchor" href="#releases" aria-labelledby="header-releases"></a></h2><h3 id="header-v0-10-38">v0.10.38<a name="v0-10-38" class="anchor" href="#v0-10-38" aria-labelledby="header-v0-10-38"></a></h3><p>Julien: Would be great to document how to upgrade OpenSSL.</p>
+<p>James: Had an item in my todo list to do that.</p>
+<p>Julien: We can team up to do that.</p>
+<p>TJ: I would suggest to start shipping an alternate binary linked with shared
+dynamic libraries for libuv, OpenSSL, etc.</p>
+<p>TJ: Might be difficult to do that for dependencies where we have floating
+patches.</p>
+<h3 id="header-v0-12-2">v0.12.2<a name="v0-12-2" class="anchor" href="#v0-12-2" aria-labelledby="header-v0-12-2"></a></h3><p>Julien: New P-1 issue added: debugger is very slow, takes 1 or 2 minutes to do
+basic operations, see <a href="https://github.com/joyent/node/issues/9125">https://github.com/joyent/node/issues/9125</a> for more
+information.</p>
+<p>Trevor: There&#39;s a major issue with buffer
+(<a href="https://github.com/joyent/node/issues/9180">https://github.com/joyent/node/issues/9180</a>) that causes asserts for a lot of
+users, can we get a v0.12.2 release asap with the current state of v0.12, and
+move everything else from the 0.12.2 milestone to 0.12.3?</p>
+<p>Julien: We may also want to add an upgrade to npm 2.7.3 for this release.</p>
+<p>Trevor: See also <a href="https://github.com/joyent/node/issues/14165">https://github.com/joyent/node/issues/14165</a>.</p>
+<p>No objection from anyone.</p>
+<h2 id="header-tool-for-testing-npm-modules">Tool for testing npm modules<a name="tool-for-testing-npm-modules" class="anchor" href="#tool-for-testing-npm-modules" aria-labelledby="header-tool-for-testing-npm-modules"></a></h2><p>James: Currently porting from Python to Node.js. Will put in a separate repo.
+Some issues regarding non-uniform tests output and additional npm
+dependencies.</p>
+<h2 id="header-discussions-with-pm2-developers">Discussions with PM2 developers<a name="discussions-with-pm2-developers" class="anchor" href="#discussions-with-pm2-developers" aria-labelledby="header-discussions-with-pm2-developers"></a></h2><p>TJ: Met recently with developers from PM2. Would like to have a discussion
+with them around potential improvements to the cluster module.</p>
+<h2 id="header-crypto-performance">Crypto performance<a name="crypto-performance" class="anchor" href="#crypto-performance" aria-labelledby="header-crypto-performance"></a></h2><p>James: Interested in getting some work to propose enhancements to crypto
+performance. What do you think about adding async mechanisms to crypto?</p>
+<p>TJ: Could have a discussion of what we&#39;d like as an async API. Could also
+broaden the discussion to a long term goal of having better TLS performance.
+That will be even more important with HTTP/2.</p>
+<p>James: Can start the conversation with a proposal of improvements.</p>
+<h2 id="header-website">Website<a name="website" class="anchor" href="#website" aria-labelledby="header-website"></a></h2><p>TJ: We&#39;ll have a new single certificate with support for subdomains.</p>
+<p>Robert: Need some feedback on <a href="https://github.com/joyent/node-">https://github.com/joyent/node-</a>
+website/issues/81.</p>
+<p>Robert: Made changes to the license here: <a href="https://github.com/joyent/node-">https://github.com/joyent/node-</a>
+website/pull/93.</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-03-26</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-03-26</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 26 Mar 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Minutes for the Node.js core team meeting of 03/19/2015]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><ul>
+<li>Alexis Campailla</li>
+<li>James Snell</li>
+<li>Julien Gilli</li>
+<li>Michael Dawson</li>
+<li>Steven Loomis</li>
+<li>TJ Fontaine</li>
+<li>Trevor Norris</li>
+</ul>
+<h2 id="header-discussion">Discussion<a name="discussion" class="anchor" href="#discussion" aria-labelledby="header-discussion"></a></h2><p>New Openssl vulnerabilities reported today. Important but not a panic. Node
+uses openssl 1.0.1  and higher severity issues were reported against 1.0.2.
+James will create pull request and we&#39;d like to see the update go out either
+Friday (torrow) or Monday.</p>
+<p>We discussed different options and agreed that 0.10.38 will be the same as
+0.10.37 plus the new openssl level and similarlty 0.12.1 will be the same as
+0.12.0 plus the new openssl level.</p>
+<p>There was some discussion about including the changes that have gone into the
+existing 0.12.1 branch but we agreed it was best not to do this.</p>
+<h3 id="header-upcoming-releases">Upcoming releases<a name="upcoming-releases" class="anchor" href="#upcoming-releases" aria-labelledby="header-upcoming-releases"></a></h3><h4 id="header-v0-10-38">v0.10.38<a name="v0-10-38" class="anchor" href="#v0-10-38" aria-labelledby="header-v0-10-38"></a></h4><p>Only discussion was related to openssl issue as covered above.</p>
+<h4 id="header-v0-12-1">v0.12.1<a name="v0-12-1" class="anchor" href="#v0-12-1" aria-labelledby="header-v0-12-1"></a></h4><p>Trevor: still having some issues with building on BSD 10.1. TJ is going to
+have a look at it to see if he can help out.</p>
+<p>Libuv upgrade, should be ready just need to run accept job to pull it in.</p>
+<p>Michael raised issue 9439 which covers a patch to v8 to bring profiling
+for 0.12.X back up to the level of 0.10.X. TJ identified that the next
+steps for 0.12.2 are:</p>
+<ul>
+<li>Libuv update.</li>
+<li>Lateral V8 change.</li>
+<li>floating patches for v8.</li>
+<li>Look at adding the floating patch for 9439.</li>
+</ul>
+<h3 id="header-update-on-workflow-issues-management-proposal">Update on workflow/issues management proposal<a name="update-on-workflow-issues-management-proposal" class="anchor" href="#update-on-workflow-issues-management-proposal" aria-labelledby="header-update-on-workflow-issues-management-proposal"></a></h3><p>Julien: We will roll this out in stages over the new few weeks. At this point
+we should be using the node-accept-pull-request jenkins jobs to
+accept/validate pull requests. Julien will add to node websites the parts we
+are putting into use. Next to be added is nomination for milestones which
+we&#39;ll probably start using in a couple of weeks.</p>
+<h3 id="header-general">General<a name="general" class="anchor" href="#general" aria-labelledby="header-general"></a></h3><h4 id="header-next-v8-upgrade">Next V8 upgrade<a name="next-v8-upgrade" class="anchor" href="#next-v8-upgrade" aria-labelledby="header-next-v8-upgrade"></a></h4><p>Michael asked about how we&#39;d choose the next V8 version. TJ confirmed it would
+most likely be the current stable V8 level when 0.13/0.14 get started, however
+there are issues around the toolset needed to support the latest V8 releases
+and how we can maintain support for older OS levels might affect this.</p>
+<h4 id="header-icu-crash-issue-9361">ICU crash - Issue 9361<a name="icu-crash-issue-9361" class="anchor" href="#icu-crash-issue-9361" aria-labelledby="header-icu-crash-issue-9361"></a></h4><p>Fix for this is already integrated in a later V8 version. Steven Loomis is
+looking at this and there is a pull request ready to backport the existing
+fix. There was some discussion about the best approach and in the end we
+agreed the existing fix is appropriate and we should just backport it to
+0.12.2.</p>
+<h4 id="header-testing-release-candidates">Testing release candidates<a name="testing-release-candidates" class="anchor" href="#testing-release-candidates" aria-labelledby="header-testing-release-candidates"></a></h4><p>Julien is talking with some groups about doing some pre-release testing on
+release candidates. TJ suggested we should ask for volunteers on the blog or
+twitter. It will need to be a full blown release candidate due to gyp
+dependencies etc. Julien will write up a proposal.</p>
+<h4 id="header-tooling-around-issues-pr-triaging">Tooling around issues/PR triaging<a name="tooling-around-issues-pr-triaging" class="anchor" href="#tooling-around-issues-pr-triaging" aria-labelledby="header-tooling-around-issues-pr-triaging"></a></h4><p>There was some discussion about whether GitHub is the best tooling, in general
+more investigation/discussion is required before doing anything.</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-03-19</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-03-19</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 19 Mar 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Minutes for the Node.js core team meeting of 03/12/2015]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><ul>
+<li>Alexis Campailla</li>
+<li>Julien Gilli</li>
+<li>Michael Dawson</li>
+<li>Steven Loomis</li>
+<li>TJ Fontaine</li>
+<li>Trevor Norris</li>
+</ul>
+<h2 id="header-discussion">Discussion<a name="discussion" class="anchor" href="#discussion" aria-labelledby="header-discussion"></a></h2><h3 id="header-upcoming-releases">Upcoming releases<a name="upcoming-releases" class="anchor" href="#upcoming-releases" aria-labelledby="header-upcoming-releases"></a></h3><h4 id="header-v0-10-37">v0.10.37<a name="v0-10-37" class="anchor" href="#v0-10-37" aria-labelledby="header-v0-10-37"></a></h4><p>Julien: All binaries, files and tarballs are available at
+<a href="https://nodejs.org/dist/v0.10.37">https://nodejs.org/dist/v0.10.37</a>. I&#39;m currently coordinating with people from
+Heroku and New Relic to have it tested. Once I hear back from them, we can
+make the announcement.</p>
+<p>TJ: It would be great to have a channel where we announce release candidates,
+and have other people willing to test them subscribe to it.</p>
+<p>Michael: Once we know there are binaries we can put that into our testing
+queue.</p>
+<p>Alexis: Microsoft doesn&#39;t have additional tests besides the ones that already
+run on Jenkins.</p>
+<p>TJ: We should write a proposal for an improved release workflow.</p>
+<h4 id="header-v0-12-1">v0.12.1<a name="v0-12-1" class="anchor" href="#v0-12-1" aria-labelledby="header-v0-12-1"></a></h4><h5 id="header-libuv-upgrade-to-1-4-0">libuv upgrade to 1.4.0<a name="libuv-upgrade-to-1-4-0" class="anchor" href="#libuv-upgrade-to-1-4-0" aria-labelledby="header-libuv-upgrade-to-1-4-0"></a></h5><p>Julien: Discussion around floating patches on top of 1.4.0 or waiting for
+1.5.0 to float less patches.</p>
+<p>TJ,Trevor: Upgrade to the latest 1.4.x, float patches and rerun the tests.</p>
+<p>Trevor: We should probably make sure to integrate
+<a href="https://github.com/joyent/node/issues/9342">https://github.com/joyent/node/issues/9342</a>.</p>
+<h5 id="header-v8-lateral-upgrade">V8 &quot;lateral&quot; upgrade<a name="v8-lateral-upgrade" class="anchor" href="#v8-lateral-upgrade" aria-labelledby="header-v8-lateral-upgrade"></a></h5><p>Trevor: Almost there.</p>
+<h5 id="header-various-v8-bugs">Various V8 bugs<a name="various-v8-bugs" class="anchor" href="#various-v8-bugs" aria-labelledby="header-various-v8-bugs"></a></h5><p>TJ: It would be great to track down current V8 bugs with people who have
+experience with codegen in V8.</p>
+<p>Michael: We can probably work on that.</p>
+<h5 id="header-icu-related-issues">ICU related issues<a name="icu-related-issues" class="anchor" href="#icu-related-issues" aria-labelledby="header-icu-related-issues"></a></h5><p>Steven: Looking into doing an npm based install of full-ICU data.</p>
+<h5 id="header-freebsd-crash">FreeBSD crash<a name="freebsd-crash" class="anchor" href="#freebsd-crash" aria-labelledby="header-freebsd-crash"></a></h5><p>TJ will provision a FreeBSD server for Trevor to take a look at this issue.</p>
+<h5 id="header-other-issues">Other issues<a name="other-issues" class="anchor" href="#other-issues" aria-labelledby="header-other-issues"></a></h5><p>Michael: <a href="https://github.com/joyent/node/issues/9317">https://github.com/joyent/node/issues/9317</a>, I will create a PR for
+that.</p>
+<p>Michael: <a href="https://github.com/joyent/node/issues/9334">https://github.com/joyent/node/issues/9334</a>, I&#39;ll take a look at the
+comments.</p>
+<h5 id="header-vm-module">VM module<a name="vm-module" class="anchor" href="#vm-module" aria-labelledby="header-vm-module"></a></h5><p>TJ: VM module leaks a lot of memory, basically never frees any resource.</p>
+<h3 id="header-port-of-v8-to-power-and-other-ibm-architectures">Port of V8 to Power and other IBM architectures<a name="port-of-v8-to-power-and-other-ibm-architectures" class="anchor" href="#port-of-v8-to-power-and-other-ibm-architectures" aria-labelledby="header-port-of-v8-to-power-and-other-ibm-architectures"></a></h3><p>Michael: We are well into our testing cycle for v0.12.0 on power.</p>
+<h3 id="header-floating-patches-on-top-of-v8">Floating patches on top of V8<a name="floating-patches-on-top-of-v8" class="anchor" href="#floating-patches-on-top-of-v8" aria-labelledby="header-floating-patches-on-top-of-v8"></a></h3><p>Michael: How open are we to floating patches on V8? For instance, issue
+with profiler performance.</p>
+<p>Steven: Also <a href="https://code.google.com/p/v8/issues/detail?id=3348">https://code.google.com/p/v8/issues/detail?id=3348</a>.</p>
+<p>TJ: We&#39;re going to have more scenarios where we need to float patches. We need
+a way to manage a queue of patches (e.g quilt). Long term solution: have a
+vanilla V8 in tree and a queue of patches.</p>
+<p>Alexis: Other way is to fork repositories, didn&#39;t have time to write the
+proposal I talked about last time, but will do as soon as possible.</p>
+<p>TJ: Problem with having our own forks is not every dependency uses Git.</p>
+<h3 id="header-leap-second">Leap second<a name="leap-second" class="anchor" href="#leap-second" aria-labelledby="header-leap-second"></a></h3><p>Steven: started an FAQ on leap seconds:
+<a href="https://gist.github.com/srl295/e74710ae42e8d13b96e7">https://gist.github.com/srl295/e74710ae42e8d13b96e7</a>.</p>
+<p>TJ: Does faketime have a way to &quot;simulate leap seconds&quot;?</p>
+<p>Julien: I don&#39;t think so, but it&#39;s worth taking a look.</p>
+<p>TJ: Maybe Steven you could use that to run tests regarding leap seconds.</p>
+<p>TJ: libuv uses monotonic time for all its operations. In node, the last
+remaining place where we were using wall clock has been fixed in 0.10.30 or
+0.10.31.</p>
+<p>Trevor: libuv uses epoll_wait, does it use monotonic/hrtime on all
+systems?</p>
+<p>TJ: Generally yes.</p>
+<p>Alexis: On Windows, for node v0.12 yes, for node v0.10 no.</p>
+<p>Alexis: We can backport the hrtime fix for v0.10.</p>
+<p>Michael: OpenSSL, c-ares and npm seem to use wall clock (gettimeofday).</p>
+<p>TJ: Apparently c-ares uses gettimeofday only if it can&#39;t use a clock
+monotonic.</p>
+<p>Alexis, Steven: Potential issues with leap seconds: negative time difference,
+minutes taking more than 60 seconds.</p>
+<p>Julien: OpenSSL might be using wall clock not for comparing dates/times, but
+for instance for inserting dates into certificates.</p>
+<p>TJ: To conclude, largest concern is backporting hrtime fix to v0.10 on
+windows.</p>
+<p>Steven: Would be great to have a statement from V8 and OpenSSL.</p>
+<h3 id="header-governance-proposal">Governance proposal<a name="governance-proposal" class="anchor" href="#governance-proposal" aria-labelledby="header-governance-proposal"></a></h3><p>TJ: I want to make sure that everyone can give feedback, so please reach out
+to me if you&#39;d like to talk about it.</p>
+<p>Steven, Michael: Could be useful to have a separate meeting soon to discuss
+that.</p>
+<p>TJ: Will find a time slot that works for everyone soon.</p>
+<h3 id="header-update-on-workflow-issues-management-proposal">Update on workflow/issues management proposal<a name="update-on-workflow-issues-management-proposal" class="anchor" href="#update-on-workflow-issues-management-proposal" aria-labelledby="header-update-on-workflow-issues-management-proposal"></a></h3><p>Julien: Still gathering feedback from other projects, goal is to start using
+it starting next week.</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-03-12</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-03-12</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 12 Mar 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Minutes for the Node.js core team meeting on 03/05/2015]]></title><description><![CDATA[<h2 id="header-present">Present<a name="present" class="anchor" href="#present" aria-labelledby="header-present"></a></h2><hr>
+<ul>
+<li>Alexis Campailla</li>
+<li>James Snell</li>
+<li>Michael Dawson</li>
+<li>Julien Gilli</li>
+<li>Trevor Norris</li>
+<li>Steven Loomis</li>
+</ul>
+<h2 id="header-discussion">Discussion<a name="discussion" class="anchor" href="#discussion" aria-labelledby="header-discussion"></a></h2><h3 id="header-general">General<a name="general" class="anchor" href="#general" aria-labelledby="header-general"></a></h3><h3 id="header-leap-second">Leap second<a name="leap-second" class="anchor" href="#leap-second" aria-labelledby="header-leap-second"></a></h3><p>There will be a leap second between July 30th and June 1st. There was
+discussion with respect to how this might affect Node. From the consumer
+perspective this may seen as clock drift which is quite common. In 0.12 Node
+uses absolute times, not dates. 0.10.X used to use dates. Most time dependant
+functions are handled by either libuv or v8. We should likely ask these
+communities what they expect the effect of the leap second to be. Michael to
+open a libuv issue to ask this question and also to see if we can  find who is
+the right person to ask in respect to V8. Steven volunteered to write up a FAQ
+covering the issue.</p>
+<h3 id="header-better-way-to-manage-dependencies">Better way to manage dependencies<a name="better-way-to-manage-dependencies" class="anchor" href="#better-way-to-manage-dependencies" aria-labelledby="header-better-way-to-manage-dependencies"></a></h3><p>Alexis initiated the discussion on a better way to manage dependencies and
+will write up a proposal. It would be nice if tests for Node ran in the test
+suites executed by the dependency teams. Failing that we should look at
+pulling in the dependencies more frequently in our CI, run the Node tests and
+provide feedback to the external teams.</p>
+<h3 id="header-next-releases">Next releases<a name="next-releases" class="anchor" href="#next-releases" aria-labelledby="header-next-releases"></a></h3><h4 id="header-0-10-37">0.10.37<a name="0-10-37" class="anchor" href="#0-10-37" aria-labelledby="header-0-10-37"></a></h4><ul>
+<li><p>Upgrade to libuv 0.10.36 in progress, code review planned for today, should
+land soon.</p>
+</li>
+<li><p>0.10.37 will possibly go out next week.</p>
+</li>
+<li><p>Priority issues for 0.10.37 - issue #9092 and reverting change to url that
+caused a regression.</p>
+</li>
+</ul>
+<h4 id="header-0-12-1-release">0.12.1 release<a name="0-12-1-release" class="anchor" href="#0-12-1-release" aria-labelledby="header-0-12-1-release"></a></h4><p>Key priority issues:</p>
+<ul>
+<li><p>libuv upgrade to 1.4.0, down to 1 test failing on OSX, ok on windows side now,
+Julien working on this.</p>
+</li>
+<li><p>V8 lateral upgrade, Trevor still working on identifying goood V8 level (issue
+9185).</p>
+</li>
+<li><p>Issue #8540, #9204 discussing whether to pull fix from io.js or one developed in
+Node.js based on which is better.</p>
+</li>
+<li><p>Issue #9245, Trevor working on this, 2 ways to make callback and depending on
+which one is called can lead to subtle bugs.</p>
+</li>
+<li><p>Issue #9339 - to be reviewed and committed</p>
+</li>
+<li><p>Issue #9317 - fix available in io.js other core team members to review to see
+if it can be pulled in.</p>
+</li>
+<li><p>Issue #9235 - ensuring NODELAY is on for all platforms.  Michael would like it
+on for AIX Julien/Alexis to review in context of Windows and other platforms.</p>
+</li>
+<li><p>Issue #9334 - tests fail when run in deep directory paths.  Julien and other
+core team members to review and comment.</p>
+</li>
+</ul>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-03-05</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-03-05</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 05 Mar 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Minutes for the Node.js core team meeting of 02/26/2015]]></title><description><![CDATA[<h2 id="header-present">Present<a name="present" class="anchor" href="#present" aria-labelledby="header-present"></a></h2><hr>
+<ul>
+<li>Alexis Campailla</li>
+<li>Colin Ihrig</li>
+<li>TJ Fontaine</li>
+<li>James Snell</li>
+<li>Robert Kowalski</li>
+<li>Michael Dawson</li>
+<li>Chris Dickinson</li>
+</ul>
+<h2 id="header-discussion">Discussion<a name="discussion" class="anchor" href="#discussion" aria-labelledby="header-discussion"></a></h2><h3 id="header-general">General<a name="general" class="anchor" href="#general" aria-labelledby="header-general"></a></h3><p>TJ has pull request to update the core team - active contributors page.
+Attendees reviewed and it should go out imminently.</p>
+<p>Discussed proposal to have github project for core team to capture
+discussions, initially to be used to capture some ci configuration. TJ is
+going to set this up.</p>
+<h3 id="header-delivery-of-icu-data">Delivery of ICU data<a name="delivery-of-icu-data" class="anchor" href="#delivery-of-icu-data" aria-labelledby="header-delivery-of-icu-data"></a></h3><p>Steven Loomis mentioned there was a suggestion to delivery to an npm.
+Attendees seemed to like this idea and discussion will be carried forward in
+<a href="https://github.com/joyent/node/pull/9091">https://github.com/joyent/node/pull/9091</a>.</p>
+<h3 id="header-website-updates">Website updates<a name="website-updates" class="anchor" href="#website-updates" aria-labelledby="header-website-updates"></a></h3><p>Discussion of proposal to rewrite node.js.org to https minus a few exceptions.
+Expecting pull request in next week or so.</p>
+<h3 id="header-node-internationalization">Node Internationalization<a name="node-internationalization" class="anchor" href="#node-internationalization" aria-labelledby="header-node-internationalization"></a></h3><p>James looking at 2 aspects:</p>
+<ul>
+<li>Internationalize Node itself, going to start on this next week.  Will use ICU
+if present, if not still need to figure out what the fallback will be.</li>
+<li>Resource bundle loading.</li>
+</ul>
+<h3 id="header-next-releases">Next Releases<a name="next-releases" class="anchor" href="#next-releases" aria-labelledby="header-next-releases"></a></h3><h4 id="header-0-10-x">0.10.X<a name="0-10-x" class="anchor" href="#0-10-x" aria-labelledby="header-0-10-x"></a></h4><ul>
+<li>In maintenance mode, new releases generally to  address security or larger
+performance issues.</li>
+<li>0.10.37 to go out this week, early next.  Main update is newer version of
+libuv.</li>
+<li>TJ asked Michael to look to do some pre-validation on AIX.</li>
+</ul>
+<h4 id="header-0-12-x">0.12.X<a name="0-12-x" class="anchor" href="#0-12-x" aria-labelledby="header-0-12-x"></a></h4><ul>
+<li>Some failing tests in 0.12 head now.</li>
+<li>Working to get jenkins job in place that can be run before integrating
+changes.</li>
+<li>Seeing some memory issues, some because node generates more garbage some
+because V8 gc is less aggressive. TJ still investigating some others which
+look to be real issues.</li>
+</ul>
+<h4 id="header-0-12-1-release">0.12.1 release<a name="0-12-1-release" class="anchor" href="#0-12-1-release" aria-labelledby="header-0-12-1-release"></a></h4><p>Key priority issues:</p>
+<ul>
+<li>libuv upgrade to 1.4, some issues seen on Windows, Alexis investigating.</li>
+<li>VM.</li>
+<li>joyent/node#9628 pull request for passing in 0 for port.</li>
+<li>Set server issue (James investigating).</li>
+<li>Abort on uncaught exception (io.js issue #836 for reference).</li>
+</ul>
+<p>Colin raised issue of pull request to add abort to http.
+Since this would change the API needs to be done in 0.14 as opposed to 0.12.
+TJ suggested a work around for current releases.</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-02-26</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-02-26</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 26 Feb 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Minutes for the Node.js core team meeting of 02/19/2015]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><h3 id="header-present">Present<a name="present" class="anchor" href="#present" aria-labelledby="header-present"></a></h3><ul>
+<li>Alexis Campailla</li>
+<li>Michael Dawson</li>
+<li>TJ Fontaine</li>
+<li>Julien Gilli</li>
+<li>Colin Ihrig</li>
+<li>Steven Loomis</li>
+<li>Bradley Meck</li>
+<li>Trevor Norris</li>
+<li>Wyatt Preul</li>
+</ul>
+<h3 id="header-regrets">Regrets<a name="regrets" class="anchor" href="#regrets" aria-labelledby="header-regrets"></a></h3><ul>
+<li><p>James Snell</p>
+<ul>
+<li>Working on:<ul>
+<li>Enabling openssl tests during the build similar to how I enabled the v8 tests.</li>
+<li>Resource and message bundle support.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Robert Kowalski</p>
+<ul>
+<li><p>Progress:</p>
+<ul>
+<li><p>I fixed the bad merge for <a href="https://github.com/joyent/node-documentation-">https://github.com/joyent/node-documentation-</a>
+generator and will continue to work on it, next items are .markdown
+support and sending a PR to node and node-website to make use of the
+module.</p>
+</li>
+<li><p>It is <a href="https://github.com/joyent/node-website/commit/dc1ab6f2037a9005d7fc44e73001bf9067e25d5b">not possible any more to accidentally deploy an outdated version of
+the website</a>.</p>
+</li>
+</ul>
+</li>
+<li><p>Blocked by:</p>
+<ul>
+<li>I&#39;m still waiting for a fixed SSl Cert for <a href="https://blog.nodejs.org/">https://blog.nodejs.org/</a> to
+continue with <a href="https://github.com/joyent/node-website/issues/68">https://github.com/joyent/node-website/issues/68</a>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="header-current-state-of-v0-12-0">Current state of v0.12.0<a name="current-state-of-v0-12-0" class="anchor" href="#current-state-of-v0-12-0" aria-labelledby="header-current-state-of-v0-12-0"></a></h2><h3 id="header-v8-issues">V8 issues<a name="v8-issues" class="anchor" href="#v8-issues" aria-labelledby="header-v8-issues"></a></h3><p>Julien: A lot of issues related to V8 came up recently after v0.12.0 was
+released. I believe Trevor is working on most of them right now.</p>
+<p>Trevor: Yes, I&#39;m currently investigating.</p>
+<h4 id="header-v8-max_old_space-issue">V8 max_old_space issue<a name="v8-max_old_space-issue" class="anchor" href="#v8-max_old_space-issue" aria-labelledby="header-v8-max_old_space-issue"></a></h4><p>See <a href="https://github.com/joyent/node/pull/9200#issuecomment-75001656">https://github.com/joyent/node/pull/9200#issuecomment-75001656</a>.</p>
+<p>TJ: We&#39;ll float the patch as it&#39;s pretty uncontroversial.</p>
+<h4 id="header-vm-module">VM module<a name="vm-module" class="anchor" href="#vm-module" aria-labelledby="header-vm-module"></a></h4><p>See <a href="https://github.com/joyent/node/issues/9084">https://github.com/joyent/node/issues/9084</a>.</p>
+<p>TJ: would like to reboot the VM module. Will do a writeup in
+<a href="https://github.com/joyent/node/issues/9084">https://github.com/joyent/node/issues/9084</a>. Who would like to work on
+implementing the proposed enhancements?</p>
+<p>Colin: I would like to work on this.</p>
+<p>TJ: alright!</p>
+<h4 id="header-let-issue">let issue<a name="let-issue" class="anchor" href="#let-issue" aria-labelledby="header-let-issue"></a></h4><p>See <a href="https://github.com/joyent/node/issues/9113">https://github.com/joyent/node/issues/9113</a>.</p>
+<p>TJ: This one should be able to be debugged with only d8 to identify if and
+what version of V8 introduced the bug.</p>
+<h3 id="header-node-makecallback-issue">node::Makecallback issue<a name="node-makecallback-issue" class="anchor" href="#node-makecallback-issue" aria-labelledby="header-node-makecallback-issue"></a></h3><p>See <a href="https://github.com/joyent/node/issues/9245">https://github.com/joyent/node/issues/9245</a>.</p>
+<p>Trevor: there&#39;s a case with some developers add-on where calling
+<code>MakeCallback</code> processes next tick callbacks. I&#39;m working on a fix that would
+make calling MakeCallback safe in every case.</p>
+<h3 id="header-security-issue-with-shared-openssl">Security issue with shared OpenSSL<a name="security-issue-with-shared-openssl" class="anchor" href="#security-issue-with-shared-openssl" aria-labelledby="header-security-issue-with-shared-openssl"></a></h3><p>See <a href="https://github.com/nodejs/node/pull/800">https://github.com/nodejs/node/pull/800</a>.</p>
+<h3 id="header-abort-on-uncaught-exception-and-domains">--abort-on-uncaught-exception and domains<a name="abort-on-uncaught-exception-and-domains" class="anchor" href="#abort-on-uncaught-exception-and-domains" aria-labelledby="header-abort-on-uncaught-exception-and-domains"></a></h3><p>Colin: abort on uncaught exception fix hasn&#39;t been forward ported to 0.12.0,
+so that prevents us from upgrading to 0.12.0.</p>
+<p>Julien: There&#39;s an issue in the 0.12.1 milestone that tracks this. See
+<a href="https://github.com/joyent/node/issues/8877">https://github.com/joyent/node/issues/8877</a>.</p>
+<h3 id="header-installer-on-windows-not-updating-path">Installer on Windows not updating PATH<a name="installer-on-windows-not-updating-path" class="anchor" href="#installer-on-windows-not-updating-path" aria-labelledby="header-installer-on-windows-not-updating-path"></a></h3><p>See <a href="https://github.com/joyent/node/issues/4356">https://github.com/joyent/node/issues/4356</a>.</p>
+<p>Alexis: issue with installer on Windows. Julien: fixed in io.js. Alexis: I
+will take care of this.</p>
+<h3 id="header-tcp_nodelay-issue">TCP_NODELAY issue<a name="tcp_nodelay-issue" class="anchor" href="#tcp_nodelay-issue" aria-labelledby="header-tcp_nodelay-issue"></a></h3><p>See <a href="https://github.com/joyent/node/issues/9235">https://github.com/joyent/node/issues/9235</a>.</p>
+<p>Michael Dawson: I have a candidate for a patch, would like to get feedback on that.</p>
+<h3 id="header-test-http-destroyed-socket-write2-js-failing-on-aix">test-http-destroyed-socket-write2.js failing on AIX<a name="test-http-destroyed-socket-write2-js-failing-on-aix" class="anchor" href="#test-http-destroyed-socket-write2-js-failing-on-aix" aria-labelledby="header-test-http-destroyed-socket-write2-js-failing-on-aix"></a></h3><p>See <a href="https://github.com/joyent/node/issues/9234">https://github.com/joyent/node/issues/9234</a>.</p>
+<p>Michael Dawson: I also have a patch for that, feedback wanted.</p>
+<h2 id="header-website">Website<a name="website" class="anchor" href="#website" aria-labelledby="header-website"></a></h2><p>Use tracing documentation as starting point for the general documentation.</p>
+<h2 id="header-i18n">i18n<a name="i18n" class="anchor" href="#i18n" aria-labelledby="header-i18n"></a></h2><p>TJ: what&#39;s the status on the bug with data customiser.</p>
+<p>Steven: thought it was an endianness issue. Updated the wiki to warn users.</p>
+<p>Steven: want to make full data available. Currently testing his solution.</p>
+<p>Bradley Meck, TJ and Steven Loomis will discuss bundles and resources today.</p>
+<h2 id="header-issues-triaging-and-general-workflow">Issues triaging and general workflow<a name="issues-triaging-and-general-workflow" class="anchor" href="#issues-triaging-and-general-workflow" aria-labelledby="header-issues-triaging-and-general-workflow"></a></h2><p>Julien: I submitted a proposal to improve our workflow here:
+<a href="https://gist.github.com/misterdjules/50d78ed4b0c5a156edd1">https://gist.github.com/misterdjules/50d78ed4b0c5a156edd1</a>.</p>
+<p>Steven: It would be nice to know what&#39;s the focus on a release, so that we
+know what issues to put in the next milestones.</p>
+<p>Steven: Having the meeting to be a go/no-go meeting would help in being more
+efficient in this.</p>
+<p>Alexis: Doing triaging during weekly meetings would also be beneficial.</p>
+<p>TJ: call tomorrow where everyone comes up with a list of priorities for next
+milestone.</p>
+<p>TJ: call tomorrow to discuss the proposal sent by Julien.</p>
+<h2 id="header-libuv-upgrade">libuv upgrade<a name="libuv-upgrade" class="anchor" href="#libuv-upgrade" aria-labelledby="header-libuv-upgrade"></a></h2><p>See <a href="https://github.com/joyent/node/pull/9179">https://github.com/joyent/node/pull/9179</a>.</p>
+<p>TJ: Caveats in the GitHub issue are the only concerns that I have. enum/int
+ABI issue, not sure if it&#39;s an actual issue or not. Would like to get more
+feedback from more knowledgeable C/C++ users. Concerned by some of the
+behavior changes in libuv.</p>
+<p>Alexis: Users can use type casting if they have issues with the sizeof(enum)
+vs sizeof(int).</p>
+<p>TJ: also, probably doesn&#39;t affect a lot of packages since it affects only the
+<code>uv_tty</code> API.</p>
+<p>Julien: Failures on Windows.</p>
+<p>Alexis: I can help to look into that.</p>
+<h2 id="header-team-organization-updates">Team organization updates<a name="team-organization-updates" class="anchor" href="#team-organization-updates" aria-labelledby="header-team-organization-updates"></a></h2><p>TJ: I would like to propose that Colin move from apprentice to core team
+member, and that Michael and Steven be appointed as apprenticies.</p>
+<h2 id="header-publication-of-minutes">Publication of minutes<a name="publication-of-minutes" class="anchor" href="#publication-of-minutes" aria-labelledby="header-publication-of-minutes"></a></h2><p>TJ: we want to publish every meeting&#39;s minutes on the website.</p>
+<h2 id="header-testing">Testing<a name="testing" class="anchor" href="#testing" aria-labelledby="header-testing"></a></h2><p>Michael Dawson: what tests should be run on a regular basis by any
+implementation?</p>
+<p>TJ: would like to have make test run as many tests suite as possible. At least
+we can make it run simple, message, gc and internet today.</p>
+<p>Michael Dawson: When do pummel, internet and other tests are run?</p>
+<p>TJ: Historically, we&#39;ve run them when building nightlies for instance. Some
+pummel tests take a long time to run on virtualized windows environments.</p>
+<p>TJ, Michael Dawson: would like to have a mechanism to have platform specific
+tests.</p>
+<h2 id="header-next-core-team-meeting">Next core team meeting<a name="next-core-team-meeting" class="anchor" href="#next-core-team-meeting" aria-labelledby="header-next-core-team-meeting"></a></h2><p>Thursday February 26th 2015.</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-02-19</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-02-19</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 19 Feb 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Minutes for the Node Summit technical roadmap meeting of 02/09/2015]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><ul>
+<li>Alexis Campailla</li>
+<li>Michael Dawson</li>
+<li>TJ Fontaine</li>
+<li>Julien Gilli</li>
+<li>Jacob Groundwater</li>
+<li>Steven Loomis</li>
+<li>Trevor Norris</li>
+<li>Issac Roth</li>
+<li>Todd Moore</li>
+<li>Dan Shaw</li>
+<li>James Snell</li>
+<li>Erik Toth</li>
+</ul>
+<h2 id="header-tj-updating-v8-versions">TJ: Updating V8 versions<a name="tj-updating-v8-versions" class="anchor" href="#tj-updating-v8-versions" aria-labelledby="header-tj-updating-v8-versions"></a></h2><p>Difference between communities. Important for IBM&#39;s regarding upstream power port.</p>
+<p>Michael Dawson: Regarding porting to power, upstreamed 2 out of the three
+parts. Started discussions on optimizations. Hoping to get this upstreamed
+this quarter. It&#39;s gonna be a little longer for the zSeries support.</p>
+<p>TJ: proposed solution: being able to run the V8 runtome as a dynamic library.
+Potential issues: modules and user land code might have to perform runtime tests to
+figure out if specific features in the JavaScript runtime are present.</p>
+<p>Dan Shaw: How to handle Node.js&#39; JavaScript APIs using recent runtime&#39;s
+capabilities (promises) that are not present in all versions of V8?</p>
+<p>TJ: That&#39;s already a problem today, and this proposed solution doesn&#39;t
+eliminate this problem. Maybe use the &quot;engines&quot; properties in package.json
+for user land modules to express their requirements.</p>
+<p>Dan Shaw: Do we need a baseline for a minimum supported set of
+language/runtime level features?</p>
+<p>TJ: Having a specification of a fundamental base layer on the runtime side.</p>
+<p>Alexis Campailla: How to handle different versions of V8?</p>
+<p>TJ: my preference would be to use something like node-addon-layer as an
+abstraction layer.</p>
+<p>Alexis, TJ: that would become the blessed V8/JSruntime API for binary add-ons.</p>
+<p>TJ: C++ ABI has worked so far, but probably because we&#39;ve been lucky. So C API
+makes more sense and would be more robust across different platforms.</p>
+<p>Alexis Campailla: What about nan?</p>
+<p>TJ: nan is a header only C++ library, so it wouldn&#39;t solve the case of loading
+runtimes dynamically. However, as a lot of users of Node.js use nan, we might
+have to provide a double abstraction.</p>
+<p>Isaac Roth: All of that sounds good, but it puts a lot of burden on module
+authors.</p>
+<p>TJ: Bert mentioned previously that using NaCl could be interesting.</p>
+<h2 id="header-issues-with-specing-what-a-node-js-runtime-baseline-is">Issues with specing what a Node.js runtime baseline is<a name="issues-with-specing-what-a-node-js-runtime-baseline-is" class="anchor" href="#issues-with-specing-what-a-node-js-runtime-baseline-is" aria-labelledby="header-issues-with-specing-what-a-node-js-runtime-baseline-is"></a></h2><p>Erik Toth: Paypal has problems with JavaScript, not with Node.js. EcmaScript
+standard is a bit nebulous, and so talking about a platform identified with an
+Ecma Script version is very confusing.</p>
+<p>James Snell: That&#39;s why we would need a baseline spec for what would be a
+compatible Node.js runtime.</p>
+<p>IBM: Specs will be unsufficient, we&#39;ll need tests also.</p>
+<p>TJ: Asynchronous code can be made easier to troubleshoot with using other
+mechanisms than promises, for instance vasync module, or other tooling.</p>
+<p>Dan Shaw: ES6 2015/2016 is coming way faster than I expected. Node.js should be
+a runtime where we can run untranspiled/untransformed code. Problems with
+JavaScript should be separated from problems that we have with Node.js itself.</p>
+<p>Issac Roth: Promises, generators, etc. will happen anyway, so we have to
+support that.</p>
+<p>Issac Roth: Promises is a core abstraction, and so promises are unavoidable.</p>
+<p>TJ: Problem of re-using code written for the browser which uses promises.</p>
+<p>Trevor: What is the point of the discussion?</p>
+<p>Trevor: The interface between the JavaScript layer and the native layer is a
+mess, cleaning that up will allow to build whatever type of interface to the
+code native layer.</p>
+<p>Trevor: You can&#39;t transition all asynchronous APIs to promises (e.g event
+emitters)</p>
+<p>Trevor: 1st priority should be to refactor some core layers to use lower level
+APIs to improve performance (e.g http should use tcp_wrap instead of
+lib/net.js).</p>
+<p>Trevor: Before supporting promises at the core layer, we&#39;d have to do some
+simplification work.</p>
+<p>Trevor: Supporting loading different runtimes will make supporting existing
+(memory monitors, tracking GC events, etc.) tooling much more difficult.</p>
+<h2 id="header-issac-roth-internationalization">Issac Roth: Internationalization<a name="issac-roth-internationalization" class="anchor" href="#issac-roth-internationalization" aria-labelledby="header-issac-roth-internationalization"></a></h2><p>Issac Roght: Ability to translate/localize error messages.</p>
+<p>James Snell: One of IBM&#39;s mandate is to be able to ship code localized for 70
+countries, otherwise needs to get exceptions.</p>
+<p>TJ: Also, concept of cleaning up error messages/objects related to i18n of error
+messages.</p>
+<h2 id="header-dan-shaw-we-talked-about-abstracting-v8-what-about-libuv">Dan Shaw: We talked about abstracting V8, what about libuv?<a name="dan-shaw-we-talked-about-abstracting-v8-what-about-libuv" class="anchor" href="#dan-shaw-we-talked-about-abstracting-v8-what-about-libuv" aria-labelledby="header-dan-shaw-we-talked-about-abstracting-v8-what-about-libuv"></a></h2><p>TJ: libuv doesn&#39;t fit the same kind of niche as V8. However, an abstraction
+layer would be helpful.</p>
+<p>Dan Shaw: Concern of how and when Node.js will catch up with libuv?</p>
+<p>TJ: At some point in the release cycle, we have to close the gates and we
+can&#39;t integrate latest versions of dependencies.</p>
+<p>TJ: Carefully scoped roadmap and more frequent releases should allow us to integrate
+newer versions of dependencies often.</p>
+<p>Isaac Roth: It will be difficult to get broad agreement on a roadmap. Usually,
+open source projects work by integrating changes organically from contributors
+dependening on what they want to work on.</p>
+<p>TJ: Have the requirement of at any time, the tip of the development
+branch can be used as a release candidate.</p>
+<h2 id="header-alexis-campailla-work-to-build-all-prs-on-every-supported-platforms">Alexis Campailla: Work to build all PRs on every supported platforms.<a name="alexis-campailla-work-to-build-all-prs-on-every-supported-platforms" class="anchor" href="#alexis-campailla-work-to-build-all-prs-on-every-supported-platforms" aria-labelledby="header-alexis-campailla-work-to-build-all-prs-on-every-supported-platforms"></a></h2><p>Alexis Campailla: I&#39;ve been doing some work to be able to build/test code from
+any GitHub pull request.</p>
+<h2 id="header-alexis-campailla-running-benchmarks-for-windows">Alexis Campailla: Running benchmarks for Windows.<a name="alexis-campailla-running-benchmarks-for-windows" class="anchor" href="#alexis-campailla-running-benchmarks-for-windows" aria-labelledby="header-alexis-campailla-running-benchmarks-for-windows"></a></h2><p>Julien: Tracking benchmarks results across every commit would be very useful
+to identify the causes of performance regressions.</p>
+<p>James Snell, Michael Dawson: IBM started to run benchmarks for downstream
+dependencies, and wants to do more of that.</p>
+<h2 id="header-tj-cluster">TJ: cluster<a name="tj-cluster" class="anchor" href="#tj-cluster" aria-labelledby="header-tj-cluster"></a></h2><p>James: Cluster seems to be used only by 6 npm modules (grepped &#39;cluster&#39;
+through 120 most used modules). However, these modules could (and probably)
+use pm2 or other abstraction on top of cluster.</p>
+<p>TJ: Cluster is mostly used internally by glue code.</p>
+<p>Alexis: Datagram socket not supported on Windows. There&#39;s a lot of room for
+improvement in the implementation.</p>
+<p>Isaac: Performance of the cluster module is not satisfying, made some
+comparison with nginx and cluster seems to be 3x slower. Could need a rewrite.</p>
+<p>Jacob: Lots of users who directly use cluster module, sometimes by just
+copy/pasting code from the doc. I would say cluster is used widely.</p>
+<p>TJ: Preference would have been to improve child_process and have userland
+modules implement clustering features.</p>
+<h2 id="header-james-snell-crypto-improvements">James Snell: Crypto improvements<a name="james-snell-crypto-improvements" class="anchor" href="#james-snell-crypto-improvements" aria-labelledby="header-james-snell-crypto-improvements"></a></h2><p>James Snell : Better access to crypto hardware is needed.</p>
+<p>TJ: libressl came out with a very compelling C API that Node.js could use.</p>
+<h2 id="header-julien-gilli-stricter-apis">Julien Gilli: stricter APIs<a name="julien-gilli-stricter-apis" class="anchor" href="#julien-gilli-stricter-apis" aria-labelledby="header-julien-gilli-stricter-apis"></a></h2><p>Julien Gilli: There are a lot of fragile APIs in Node.js. It makes these APIs
+hard to use correctly, and it is also very time consuming for contributors who
+help users troubleshoot issues related to misuses of APIs.</p>
+<p>Julien: Example of recent improvement was making net.Socket.setTimeout&#39;s API
+stricter.</p>
+<p>TJ: Differences between browser APIs strictness and Node.js API strictness.
+It&#39;s also a documentation effort and is related to better error messages.</p>
+<p>Erik Toth: Ecma has a formal type proposal that could be related.</p>
+<h2 id="header-julien-gilli-lldb-v8">Julien Gilli: lldb-v8<a name="julien-gilli-lldb-v8" class="anchor" href="#julien-gilli-lldb-v8" aria-labelledby="header-julien-gilli-lldb-v8"></a></h2><p>Julien: lldb-v8 is a great tool that, if working more reliably with different
+versions of node, could help both users and the core team to investigate bugs.</p>
+<p>TJ: I believe IBM has another toolchain that they use.</p>
+<h2 id="header-erik-toth-what-s-the-plan-with-async_wrap">Erik Toth: What&#39;s the plan with async_wrap?<a name="erik-toth-what-s-the-plan-with-async_wrap" class="anchor" href="#erik-toth-what-s-the-plan-with-async_wrap" aria-labelledby="header-erik-toth-what-s-the-plan-with-async_wrap"></a></h2><p>Dan Shaw: Gathering input from potential users currently.</p>
+<p>TJ: Some interesting output from the meeting in Vancouver last summer.</p>
+<p>Erik Toth: Lower level thing that we want to see where it goes.</p>
+<p>Jacob: Various needs for tracing, some fairly basic (intercepting what is
+logged by console.log), some much more advanced like inspecting V8 internals.
+Needs to move slowly to make sure these broad needs are satisfied.</p>
+<p>IBM: Performance is crucial.</p>
+<p>Isaac Roth: Had to constantly reimplement tracing solutions because of
+changing requirements from users. Maybe need to be very generic about this.</p>
+<p>TJ: My proposed solution was to inject calls to probes that are interpreted by
+platform-specific tracing frameworks (dtrace, ETW, etc.)</p>
+<p>Issac Roth: Building a more generic layer that other user land modules can
+build upon.</p>
+<h2 id="header-closing-comments-and-action-items">Closing comments and action items<a name="closing-comments-and-action-items" class="anchor" href="#closing-comments-and-action-items" aria-labelledby="header-closing-comments-and-action-items"></a></h2><p>James Snell: Need to prioritize things.</p>
+<p>TJ: Post ideas for roadmap somewhere where people can comment.</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-02-09</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-02-09</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Mon, 09 Feb 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Minutes for the Node.js core team meeting of 02/05/2015]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><ul>
+<li>Michael Dawson</li>
+<li>TJ Fontaine</li>
+<li>Julien Gilli</li>
+<li>Colin Ihrig</li>
+<li>Trevor Norris</li>
+<li>Wyatt Preul</li>
+<li>James Snell</li>
+</ul>
+<h2 id="header-discussions">Discussions<a name="discussions" class="anchor" href="#discussions" aria-labelledby="header-discussions"></a></h2><h3 id="header-0-12-0-release">0.12.0 release<a name="0-12-0-release" class="anchor" href="#0-12-0-release" aria-labelledby="header-0-12-0-release"></a></h3><p>Julien: Remaining issues to release 0.12.0 are in the 0.11.17 milestone on GitHub.
+Everyone agreed that there&#39;s no blocker for this release.</p>
+<p>TJ: will put a draft for blog post for release notes up and the rest of the team will review it.</p>
+<h4 id="header-native-modules-breakage">Native modules breakage<a name="native-modules-breakage" class="anchor" href="#native-modules-breakage" aria-labelledby="header-native-modules-breakage"></a></h4><p>TJ: some modules that don&#39;t use nan or other ways to build with V8 shipped by
+node v0.12.x will break. These modules will need to be fixed on a case by case
+basis.</p>
+<h3 id="header-website">Website<a name="website" class="anchor" href="#website" aria-labelledby="header-website"></a></h3><p>Wyatt: security page published.</p>
+<h3 id="header-post-0-12-0">Post 0.12.0<a name="post-0-12-0" class="anchor" href="#post-0-12-0" aria-labelledby="header-post-0-12-0"></a></h3><p>TJ: From now on, it would be nice if core team members would use
+<a href="https://github.com/joyent/git-apply-pr">https://github.com/joyent/git-apply-pr</a> to land PRs/contributions. It&#39;s a work
+in progress, bug fixes/improvements are more than welcome!</p>
+<p>TJ: We may discuss what to integrate from the core team working group of the
+Node.js Advisory Board (<a href="https://github.com/joyent/nodejs-advisory-board">https://github.com/joyent/nodejs-advisory-board</a>)
+during the next core team call.</p>
+<h3 id="header-testing-downstream-modules-and-applications">Testing downstream modules and applications<a name="testing-downstream-modules-and-applications" class="anchor" href="#testing-downstream-modules-and-applications" aria-labelledby="header-testing-downstream-modules-and-applications"></a></h3><p>Michael Dawson: need for higher level benchmarks (for upper layers like
+express, etc.).</p>
+<p>TJ: Some people have been working on downstream integration tests (for
+instance, Julien with test-node-apps)</p>
+<p>TJ: Downstream integration tests, downstream benchmarking desirable in the
+future.</p>
+<p>James: identify the top 120 most depended on modules, determine what core
+modules they use, and create a tests framework around that.</p>
+<p>Michael: Michael and James already have something simple that run tests for
+some npm modules.</p>
+<h3 id="header-node-summit">Node summit<a name="node-summit" class="anchor" href="#node-summit" aria-labelledby="header-node-summit"></a></h3><p>TJ: Tentative meeting on Monday 2pm to 4pm: purely technical meeting about
+roadmap, not a meeting about governance.</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-02-05</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-02-05</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 05 Feb 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Minutes for the Node.js core team meeting of 01/29/2015]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><ul>
+<li>Michal Dawson</li>
+<li>TJ Fontaine</li>
+<li>Colin Ihrig</li>
+<li>Julien Gilli</li>
+<li>Robert Kowalski</li>
+<li>James Snell</li>
+</ul>
+<h2 id="header-website">Website<a name="website" class="anchor" href="#website" aria-labelledby="header-website"></a></h2><p>Robert: Partially redirected http -&gt; https for api docs and docs. Only blog
+page missing. Learning about SNI. Documentation generation tool: created a
+tests suite that runs some smoke tests. Hopes to get a PR for that next week.</p>
+<p>TJ: We have a wildcard cert for the blog, so using this cert might be easier
+than using SNI.</p>
+<h2 id="header-0-11-16-release">0.11.16 release<a name="0-11-16-release" class="anchor" href="#0-11-16-release" aria-labelledby="header-0-11-16-release"></a></h2><p>Colin: has two bug fixes not API breaking that could go in for 0.11.16.</p>
+<p>TJ: Would like to put <a href="https://github.com/joyent/node/pull/8966">https://github.com/joyent/node/pull/8966</a> in v0.10. Colin
+hasn&#39;t tried to rebase it on v0.10, but will do today.</p>
+<h2 id="header-building-dependencies">Building dependencies<a name="building-dependencies" class="anchor" href="#building-dependencies" aria-labelledby="header-building-dependencies"></a></h2><p>James: Working on refactoring the way dependencies (deps/) are built.</p>
+<p>TJ: The build refactoring should target the master branch, and then might get
+backported to v0.12.</p>
+<h2 id="header-prs-issues-in-io-js">PRs/Issues in io.js<a name="prs-issues-in-io-js" class="anchor" href="#prs-issues-in-io-js" aria-labelledby="header-prs-issues-in-io-js"></a></h2><p>TJ: When we see bugs in io.js that are also in Node.js, then please report
+these bugs.</p>
+<p>James: I&#39;m going to go through the recent changes in io.js and will report
+issues/PRs.</p>
+<h2 id="header-powerpc-support">PowerPC support<a name="powerpc-support" class="anchor" href="#powerpc-support" aria-labelledby="header-powerpc-support"></a></h2><p>Michael, James and TJ: Jenkins agents building and running tests for the Power
+platform will be hooked up asap.</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-01-29</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-01-29</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 29 Jan 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Minutes for the Node.js core team meeting of 01/22/2015]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><ul>
+<li>Michael Dawson</li>
+<li>Chris Dickinson</li>
+<li>TJ Fontaine</li>
+<li>Julien Gilli</li>
+<li>Colin Ihrig</li>
+<li>Robert Kowalski</li>
+<li>Steven R Loomis</li>
+<li>Trevor Norris</li>
+</ul>
+<h2 id="header-minutes">Minutes<a name="minutes" class="anchor" href="#minutes" aria-labelledby="header-minutes"></a></h2><h3 id="header-update-on-the-state-of-0-11-16">Update on the state of 0.11.16<a name="update-on-the-state-of-0-11-16" class="anchor" href="#update-on-the-state-of-0-11-16" aria-labelledby="header-update-on-the-state-of-0-11-16"></a></h3><h4 id="header-tool-to-update-authors-file">Tool to update AUTHORS file<a name="tool-to-update-authors-file" class="anchor" href="#tool-to-update-authors-file" aria-labelledby="header-tool-to-update-authors-file"></a></h4><p>The current tooling to update the AUTHORS and .mailmap file should be
+refactored to:</p>
+<ul>
+<li>Order authors by name using a stable sort algorithm.</li>
+<li>Update the .mailmap file with authors&#39; email addresses.</li>
+</ul>
+<p>Julien has been assigned to this and work is in progress at
+<a href="https://github.com/joyent/node/pull/9088">https://github.com/joyent/node/pull/9088</a>.</p>
+<p>Participants agreed that eventually the project should have more tooling to
+land changes from contributors and that these tools would also take care of
+updating authors files each time a contribution is integrated in the code
+repository.</p>
+<h4 id="header-url-format-url-parse">url.format/url.parse<a name="url-format-url-parse" class="anchor" href="#url-format-url-parse" aria-labelledby="header-url-format-url-parse"></a></h4><p>The only issue non-straightforward issue remaining in the 0.11.6 milestone is a
+<a href="https://github.com/joyent/node/issues/9070">recent regression in
+<code>url.format</code></a>.</p>
+<p>Two discussions started, one that was about what can be done before v0.12.0 is
+released, and another one about what can be done post v0.12.0. Some
+participants mentioned that ultimately, the goal would probably be to conform
+to the whatwg spec and deprecate the current <code>url</code> module.</p>
+<p>All participants agreed that before v0.12.0 is released, <code>url.format</code> should
+throw on conflicting properties. Chris was assigned to this task.</p>
+<h4 id="header-target-date">Target date<a name="target-date" class="anchor" href="#target-date" aria-labelledby="header-target-date"></a></h4><p>The target date for releasing 0.11.16 is &quot;as soon as possible&quot;. Being a
+development release, there&#39;s no constraint on which day of the week the
+release should be done.</p>
+<h3 id="header-update-on-icu-i18n-for-0-12-0">Update on ICU (i18n) for 0.12.0<a name="update-on-icu-i18n-for-0-12-0" class="anchor" href="#update-on-icu-i18n-for-0-12-0" aria-labelledby="header-update-on-icu-i18n-for-0-12-0"></a></h3><p>Steven tested the English language support included in the v0.11.15 release.
+He mentioned that it seems to be working fine, but that he hadn&#39;t had the
+opportunity to test loading additional data.</p>
+<p>Robert, Steven and TJ also discussed updating the website to document how to
+load additional data.</p>
+<h3 id="header-website-documentation-effort">Website / Documentation effort<a name="website-documentation-effort" class="anchor" href="#website-documentation-effort" aria-labelledby="header-website-documentation-effort"></a></h3><p>Robert and TJ discussed how to to factor out the documentation from the
+project. Robert also mentioned that he&#39;d like to work with Chris on the
+website to integrate features/tools that are now available in io.js (for
+instance, comments in documentation).</p>
+<p>Robert also mentioned that he&#39;s going to check-in the website&#39;s configuration
+file in source control.</p>
+<h3 id="header-node-on-power-processors">Node on Power processors<a name="node-on-power-processors" class="anchor" href="#node-on-power-processors" aria-labelledby="header-node-on-power-processors"></a></h3><p>Michael Dawson from IBM talked about Node.js on PowerPC processors. TJ and
+Michael agreed that the target for such a port would likely be 0.14.0. Michael
+mentioned that ideally the process of upstreaming changes to V8 would be done
+by that time. If not, there has been discussions recently between TJ and Chris
+on refactoring the dependencies management so that maintaining floating
+patches (also for other dependencies like c-ares and OpenSSL) would be easier.</p>
+<h3 id="header-0-10-36-release">0.10.36 release<a name="0-10-36-release" class="anchor" href="#0-10-36-release" aria-labelledby="header-0-10-36-release"></a></h3><p>The 0.10.36 milestone is done, and the release is planned for today (Thursday
+January 22nd).</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-01-22</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-01-22</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 22 Jan 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Minutes for the Node.js core team meeting of 01/15/2015]]></title><description><![CDATA[<h2 id="header-participants">Participants<a name="participants" class="anchor" href="#participants" aria-labelledby="header-participants"></a></h2><ul>
+<li>Timothy J Fontaine</li>
+<li>Julien Gilli</li>
+<li>Robert Kowalski</li>
+</ul>
+<h2 id="header-topics">Topics<a name="topics" class="anchor" href="#topics" aria-labelledby="header-topics"></a></h2><h3 id="header-website">Website<a name="website" class="anchor" href="#website" aria-labelledby="header-website"></a></h3><p>The only topic that was discussed during this meeting was the Node.js website.</p>
+<h4 id="header-https-access">HTTPS access<a name="https-access" class="anchor" href="#https-access" aria-labelledby="header-https-access"></a></h4><p>Robert suggested adding HTTPS access for Node.js&#39; website. TJ mentioned that
+there is already a HTTPS endpoint on the website, but that clients (browsers,
+etc.) are not <em>redirected</em> by default from http to https, because doing so was
+breaking a lot of people (e.g nvm).</p>
+<p>Proposed solution by TJ: redirect everything by default to https except
+nodejs.org/dist.</p>
+<p>Robert proposed to setup a clone of the website with this change to be able to
+test it.</p>
+<h4 id="header-documentation-versions">Documentation versions<a name="documentation-versions" class="anchor" href="#documentation-versions" aria-labelledby="header-documentation-versions"></a></h4><p>Robert suggested a new feature for the documentation available on Node.js&#39;
+website: accessing docs for different versions.</p>
+<p>Robert asked if regenerating the documentation for versions older than 0.10
+makes sense. TJ mentioned that we probably don&#39;t want to go back further than
+0.10. However, participants agreed that in the future, publishing older
+documentation could be fun and/or interesting.</p>
+<p>TJ suggested that documentation generation tools could be refactored and
+published as npm packages so that they can work standalone. That could make
+generating documentation for different versions easier.</p>
+<p>TJ also pointed out that a significant SEO effort went into making sure that
+the latest Node.js documentation shows up when searching for Node
+documentation, and that any change to the website&#39;s documentation should
+preserve that.</p>
+]]></description><link>https://nodejs.org/en/foundation/tsc/minutes/2015-01-15</link><guid isPermaLink="true">https://nodejs.org/en/foundation/tsc/minutes/2015-01-15</guid><dc:creator><![CDATA[Node.js Foundation]]></dc:creator><pubDate>Thu, 15 Jan 2015 00:00:00 GMT</pubDate></item></channel></rss>
