@@ -158,10 +158,13 @@
 <p>오류코드, 프로세스 신호 등에 대해 일반적으로 사용되는 운영체제 특정 상수를 포함하는 개체를 반환합니다. 현재 정의된 특정 상수는  <a href="#os_os_constants">OS 상수</a>에 설명되어 있습니다.</p>
 <h2>os.cpus()<span><a class="mark" href="#os_os_cpus" id="os_os_cpus">#</a></span></h2>
 <div class="api_metadata">
-<span>Added in: v0.3.3</span>
+<span>추가됨 : v0.3.3</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="type">&lt;Array&gt;</a></li>
 </ul>
+
+<!-- 2017.08.02 까지 -->
+
 <p>The <code>os.cpus()</code> method returns an array of objects containing information about
 each CPU/core installed.</p>
 <p>The properties included on each object include:</p>
@@ -274,7 +277,7 @@ each CPU/core installed.</p>
 all processors are always 0.</p>
 <h2>os.endianness()<span><a class="mark" href="#os_os_endianness" id="os_os_endianness">#</a></span></h2>
 <div class="api_metadata">
-<span>Added in: v0.9.4</span>
+<span>추가됨 : v0.9.4</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
 </ul>
@@ -287,7 +290,7 @@ CPU <em>for which the Node.js binary was compiled</em>.</p>
 </ul>
 <h2>os.freemem()<span><a class="mark" href="#os_os_freemem" id="os_os_freemem">#</a></span></h2>
 <div class="api_metadata">
-<span>Added in: v0.3.3</span>
+<span>추가됨 : v0.3.3</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;integer&gt;</a></li>
 </ul>
@@ -295,7 +298,7 @@ CPU <em>for which the Node.js binary was compiled</em>.</p>
 an integer.</p>
 <h2>os.homedir()<span><a class="mark" href="#os_os_homedir" id="os_os_homedir">#</a></span></h2>
 <div class="api_metadata">
-<span>Added in: v2.3.0</span>
+<span>추가됨 : v2.3.0</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
 </ul>
@@ -303,7 +306,7 @@ an integer.</p>
 string.</p>
 <h2>os.hostname()<span><a class="mark" href="#os_os_hostname" id="os_os_hostname">#</a></span></h2>
 <div class="api_metadata">
-<span>Added in: v0.3.3</span>
+<span>추가됨 : v0.3.3</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
 </ul>
@@ -311,7 +314,7 @@ string.</p>
 string.</p>
 <h2>os.loadavg()<span><a class="mark" href="#os_os_loadavg" id="os_os_loadavg">#</a></span></h2>
 <div class="api_metadata">
-<span>Added in: v0.3.3</span>
+<span>추가됨 : v0.3.3</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="type">&lt;Array&gt;</a></li>
 </ul>
@@ -324,7 +327,7 @@ average should ideally be less than the number of logical CPUs in the system.</p
 Windows platforms. On Windows, the return value is always <code>[0, 0, 0]</code>.</p>
 <h2>os.networkInterfaces()<span><a class="mark" href="#os_os_networkinterfaces" id="os_os_networkinterfaces">#</a></span></h2>
 <div class="api_metadata">
-<span>Added in: v0.6.0</span>
+<span>추가됨 : v0.6.0</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&lt;Object&gt;</a></li>
 </ul>
@@ -381,7 +384,7 @@ is <code>IPv6</code>)</li>
 </code></pre>
 <h2>os.platform()<span><a class="mark" href="#os_os_platform" id="os_os_platform">#</a></span></h2>
 <div class="api_metadata">
-<span>Added in: v0.5.0</span>
+<span>추가됨 : v0.5.0</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
 </ul>
@@ -403,7 +406,7 @@ the Android operating system. However, Android support in Node.js is considered
 to be experimental at this time.</p>
 <h2>os.release()<span><a class="mark" href="#os_os_release" id="os_os_release">#</a></span></h2>
 <div class="api_metadata">
-<span>Added in: v0.3.3</span>
+<span>추가됨 : v0.3.3</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
 </ul>
@@ -414,7 +417,7 @@ uname(3). On Windows, <code>GetVersionExW()</code> is used. Please see
 <a href="https://en.wikipedia.org/wiki/Uname#Examples">https://en.wikipedia.org/wiki/Uname#Examples</a> for more information.</p>
 <h2>os.tmpdir()<span><a class="mark" href="#os_os_tmpdir" id="os_os_tmpdir">#</a></span></h2>
 <div class="api_metadata">
-<span>Added in: v0.9.9</span>
+<span>추가됨 : v0.9.9</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
 </ul>
@@ -422,7 +425,7 @@ uname(3). On Windows, <code>GetVersionExW()</code> is used. Please see
 default directory for temporary files.</p>
 <h2>os.totalmem()<span><a class="mark" href="#os_os_totalmem" id="os_os_totalmem">#</a></span></h2>
 <div class="api_metadata">
-<span>Added in: v0.3.3</span>
+<span>추가됨 : v0.3.3</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;integer&gt;</a></li>
 </ul>
@@ -430,7 +433,7 @@ default directory for temporary files.</p>
 as an integer.</p>
 <h2>os.type()<span><a class="mark" href="#os_os_type" id="os_os_type">#</a></span></h2>
 <div class="api_metadata">
-<span>Added in: v0.3.3</span>
+<span>추가됨 : v0.3.3</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
 </ul>
@@ -441,7 +444,7 @@ as returned by <a href="http://man7.org/linux/man-pages/man3/uname.3.html">uname
 information about the output of running <a href="http://man7.org/linux/man-pages/man3/uname.3.html">uname(3)</a> on various operating systems.</p>
 <h2>os.uptime()<span><a class="mark" href="#os_os_uptime" id="os_os_uptime">#</a></span></h2>
 <div class="api_metadata">
-<span>Added in: v0.3.3</span>
+<span>추가됨 : v0.3.3</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;integer&gt;</a></li>
 </ul>
@@ -450,7 +453,7 @@ information about the output of running <a href="http://man7.org/linux/man-pages
 Use <code>Math.floor()</code> to get whole seconds.</p>
 <h2>os.userInfo([options])<span><a class="mark" href="#os_os_userinfo_options" id="os_os_userinfo_options">#</a></span></h2>
 <div class="api_metadata">
-<span>Added in: v6.0.0</span>
+<span>추가됨 : v6.0.0</span>
 </div><ul>
 <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&lt;Object&gt;</a><ul>
 <li><code>encoding</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> Character encoding used to interpret resulting strings.
