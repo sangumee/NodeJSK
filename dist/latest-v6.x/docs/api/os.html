@@ -167,20 +167,18 @@
 <p>각 개체에 포함된 속성은 다음과 같습니다 :</p>
 <ul>
 
-<!-- 2017-08-02 21:43 save -->
-
 <li><code>model</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
 <li><code>speed</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> (in MHz)</li>
 <li><code>times</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&lt;Object&gt;</a><ul>
-<li><code>user</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> The number of milliseconds the CPU has spent in user mode.</li>
-<li><code>nice</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> The number of milliseconds the CPU has spent in nice mode.</li>
-<li><code>sys</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> The number of milliseconds the CPU has spent in sys mode.</li>
-<li><code>idle</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> The number of milliseconds the CPU has spent in idle mode.</li>
-<li><code>irq</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> The number of milliseconds the CPU has spent in irq mode.</li>
+<li><code>user</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> CPU가 사용자 모드에서 사용된 시간(밀리초)을 표시합니다.</li>
+<li><code>nice</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> CPU가 양호한 모드로 사용된 시간(밀리초)을 표시합니다.</li>
+<li><code>sys</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> CPU가 시스템 모드로 사용된 사용된 시간(밀리초)을 표시합니다.</li>
+<li><code>idle</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> CPU가 유휴 모드에서 사용된 시간(밀리초)을 표시합니다.</li>
+<li><code>irq</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> CPU가 인터럽트 요청모드에서 사용된 시간(밀리초)을 표시합니다.</li>
 </ul>
 </li>
 </ul>
-<p>For example:</p>
+<p>예시 :</p>
 <!-- eslint-disable semi -->
 <pre><code class="lang-js">[
   {
@@ -273,20 +271,18 @@
   }
 ]
 </code></pre>
-<p><em>Note</em>: Because <code>nice</code> values are UNIX-specific, on Windows the <code>nice</code> values of
-all processors are always 0.</p>
+<p><em>메모</em>: <code>nice</code> 값은 UNIX 전용이므로 윈도우에서의 모든 <code>nice</code> 프로세서 값은 항상 0입니다. </p>
 <h2>os.endianness()<span><a class="mark" href="#os_os_endianness" id="os_os_endianness">#</a></span></h2>
 <div class="api_metadata">
 <span>추가됨 : v0.9.4</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
 </ul>
-<p>The <code>os.endianness()</code> method returns a string identifying the endianness of the
-CPU <em>for which the Node.js binary was compiled</em>.</p>
-<p>Possible values are:</p>
+<p><code>os.endianness()</code> 메소드는 Node.js 바이너리가 편집된 CPU의 엔디언을 식별하는 문자열을 반환합니다.</p>
+<p>가능한 값은 다음과 같습니다 :</p>
 <ul>
-<li><code>&#39;BE&#39;</code> for big endian</li>
-<li><code>&#39;LE&#39;</code> for little endian.</li>
+<li><code>&#39;BE&#39;</code> 큰 단위가 앞에 나오는 Big-endian</li>
+<li><code>&#39;LE&#39;</code> 작은 단위가 앞으로 나오는 Little-endian</li>
 </ul>
 <h2>os.freemem()<span><a class="mark" href="#os_os_freemem" id="os_os_freemem">#</a></span></h2>
 <div class="api_metadata">
@@ -294,57 +290,47 @@ CPU <em>for which the Node.js binary was compiled</em>.</p>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;integer&gt;</a></li>
 </ul>
-<p>The <code>os.freemem()</code> method returns the amount of free system memory in bytes as
-an integer.</p>
+<p><code>os.freemem()</code> 메소드는 사용 가능한 시스템 메모리의 양을 정수로 반환합니다.</p>
 <h2>os.homedir()<span><a class="mark" href="#os_os_homedir" id="os_os_homedir">#</a></span></h2>
 <div class="api_metadata">
 <span>추가됨 : v2.3.0</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
 </ul>
-<p>The <code>os.homedir()</code> method returns the home directory of the current user as a
-string.</p>
+<p><code>os.homedir()</code> 메소드는 현재 사용자의 홈 디렉토리를 문자로 반환합니다.</p>
 <h2>os.hostname()<span><a class="mark" href="#os_os_hostname" id="os_os_hostname">#</a></span></h2>
 <div class="api_metadata">
 <span>추가됨 : v0.3.3</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
 </ul>
-<p>The <code>os.hostname()</code> method returns the hostname of the operating system as a
-string.</p>
+<p><code>os.hostname()</code> 메서드는 운영체제의 호스트 이름을 문자열로 반환합니다.</p>
 <h2>os.loadavg()<span><a class="mark" href="#os_os_loadavg" id="os_os_loadavg">#</a></span></h2>
 <div class="api_metadata">
 <span>추가됨 : v0.3.3</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="type">&lt;Array&gt;</a></li>
 </ul>
-<p>The <code>os.loadavg()</code> method returns an array containing the 1, 5, and 15 minute
-load averages.</p>
-<p>The load average is a measure of system activity, calculated by the operating
-system and expressed as a fractional number.  As a rule of thumb, the load
-average should ideally be less than the number of logical CPUs in the system.</p>
-<p>The load average is a UNIX-specific concept with no real equivalent on
-Windows platforms. On Windows, the return value is always <code>[0, 0, 0]</code>.</p>
+<p><code>os.loadavg()</code> 메소드는 1분, 5분 및 15분 단위로 부하 평균이 포함된 배열을 반환합니다.</p>
+<p>로드 평균은 운영체제가 계산한 시스템 활동을 측정한 후 분수수로 표현한 것입니다. 일반적으로, 하중평균은 시스템 논리적 CPU수보다 더 작아야합니다.</p>
+<p>로드 평균은 Windows 플랫폼에 실질적으로 속하지 않은 UNIX 고유 개념입니다. Windows에서의 반환값은 항상 <code>[0, 0, 0]</code>입니다.</p>
 <h2>os.networkInterfaces()<span><a class="mark" href="#os_os_networkinterfaces" id="os_os_networkinterfaces">#</a></span></h2>
 <div class="api_metadata">
 <span>추가됨 : v0.6.0</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&lt;Object&gt;</a></li>
 </ul>
-<p>The <code>os.networkInterfaces()</code> method returns an object containing only network
-interfaces that have been assigned a network address.</p>
-<p>Each key on the returned object identifies a network interface. The associated
-value is an array of objects that each describe an assigned network address.</p>
-<p>The properties available on the assigned network address object include:</p>
+<p><code>os.networkInterfaces()</code> 메소드는 네트워크 주소가 할당된 네트워크 인터페이스만 포함하는 개체를 반환합니다.</p>
+<p>반환된 객체의 각 키는 네트워크 인터페이스를 식별합니다. 연결된 값은 할당된 네트워크 주소를 각각 설명하는 개체의 배열입니다.</p>
+<p>할당된 네트워크 주소 개체에 사용할수 있는 속성은 다음과 같습니다 :</p>
 <ul>
-<li><code>address</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> The assigned IPv4 or IPv6 address</li>
-<li><code>netmask</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> The IPv4 or IPv6 network mask</li>
-<li><code>family</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> Either <code>IPv4</code> or <code>IPv6</code></li>
-<li><code>mac</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> The MAC address of the network interface</li>
-<li><code>internal</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" class="type">&lt;boolean&gt;</a> <code>true</code> if the network interface is a loopback or
-similar interface that is not remotely accessible; otherwise <code>false</code></li>
-<li><code>scopeid</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> The numeric IPv6 scope ID (only specified when <code>family</code>
-is <code>IPv6</code>)</li>
+<li><code>address</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> 할당된 IPv4 또는 IPv6 주소</li>
+<li><code>netmask</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> 할당된 IPv4 또는 IPv6 마스크</li>
+<li><code>family</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> <code>IPv4</code> 또는 <code>IPv6</code>중 하나</li>
+<li><code>mac</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> 네트워크 인터페이스의 MAC 주소</li>
+<li><code>internal</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" class="type">&lt;boolean&gt;</a> 네트워크 인터페이스가 루프백 또는 이와 유사한 인터페이스로 액세스 할 수 없는 경우 <code>true</code> 값을 반환합니다.; 그 외에는 <code>false</code> 값을 반환합니다.</li>
+<li><code>scopeid</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> IPv6 scope ID  수 (<code>family</code>로 지정한 경우에만
+<code>IPv6</code>로 지정됨)</li>
 </ul>
 <!-- eslint-skip -->
 <pre><code class="lang-js">{
@@ -388,9 +374,8 @@ is <code>IPv6</code>)</li>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
 </ul>
-<p>The <code>os.platform()</code> method returns a string identifying the operating system
-platform as set during compile time of Node.js.</p>
-<p>Currently possible values are:</p>
+<p><code>os.platform()</code> 메소드는 Node.js를 컴파일 시 설정된 운영체제 플랫폼을 식별하는 문자열을 반환합니다.</p>
+<p>현재 가능한 값은 다음과 같습니다 :</p>
 <ul>
 <li><code>&#39;aix&#39;</code></li>
 <li><code>&#39;darwin&#39;</code></li>
@@ -400,64 +385,58 @@ platform as set during compile time of Node.js.</p>
 <li><code>&#39;sunos&#39;</code></li>
 <li><code>&#39;win32&#39;</code></li>
 </ul>
-<p>Equivalent to <a href="process.html#process_process_platform"><code>process.platform</code></a>.</p>
-<p><em>Note</em>: The value <code>&#39;android&#39;</code> may also be returned if the Node.js is built on
-the Android operating system. However, Android support in Node.js is considered
-to be experimental at this time.</p>
+<p><a href="process.html#process_process_platform"><code>process.platform</code></a> 과 동등합니다.</p>
+<p><em>메모</em>: <code>&#39;android&#39;</code> 운영체제에 Node.js가 내장되어 있으면 'Android' 값을 반환할 수도 있습니다. 그러나 안드로이드의 지원은 이번에 실험적인 것으로 간주됩니다.</p>
 <h2>os.release()<span><a class="mark" href="#os_os_release" id="os_os_release">#</a></span></h2>
 <div class="api_metadata">
 <span>추가됨 : v0.3.3</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
 </ul>
-<p>The <code>os.release()</code> method returns a string identifying the operating system
-release.</p>
-<p><em>Note</em>: On POSIX systems, the operating system release is determined by calling
-uname(3). On Windows, <code>GetVersionExW()</code> is used. Please see
-<a href="https://en.wikipedia.org/wiki/Uname#Examples">https://en.wikipedia.org/wiki/Uname#Examples</a> for more information.</p>
+<p><code>os.release()</code> 메소드는 운영체제 릴리스를 식별하는 문자열을 반환합니다.</p>
+<p><em>메모</em>: POSIX 시스템, 운영체제 릴리즈는 호출에 의해 결정됩니다.
+uname(3). Windows 에서는, <code>GetVersionExW()</code> 가 사용됩니다. 자세한 정보는
+<a href="https://en.wikipedia.org/wiki/Uname#Examples">https://en.wikipedia.org/wiki/Uname#Examples</a> 에 방문해주세요.</p>
 <h2>os.tmpdir()<span><a class="mark" href="#os_os_tmpdir" id="os_os_tmpdir">#</a></span></h2>
 <div class="api_metadata">
 <span>추가됨 : v0.9.9</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
 </ul>
-<p>The <code>os.tmpdir()</code> method returns a string specifying the operating system&#39;s
-default directory for temporary files.</p>
+<p><code>os.tmpdir()</code> 메소드는 임시 파일에 대한 운영체제의 기본 디렉터리를 지정하는 문자열을 반환합니다.</p>
 <h2>os.totalmem()<span><a class="mark" href="#os_os_totalmem" id="os_os_totalmem">#</a></span></h2>
 <div class="api_metadata">
 <span>추가됨 : v0.3.3</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;integer&gt;</a></li>
 </ul>
-<p>The <code>os.totalmem()</code> method returns the total amount of system memory in bytes
-as an integer.</p>
+<p><code>os.totalmem()</code> 메소드는 시스템 메모리의 총 양의 정수값을 byte로 반환합니다.</p>
 <h2>os.type()<span><a class="mark" href="#os_os_type" id="os_os_type">#</a></span></h2>
 <div class="api_metadata">
 <span>추가됨 : v0.3.3</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
 </ul>
-<p>The <code>os.type()</code> method returns a string identifying the operating system name
-as returned by <a href="http://man7.org/linux/man-pages/man3/uname.3.html">uname(3)</a>. For example <code>&#39;Linux&#39;</code> on Linux, <code>&#39;Darwin&#39;</code> on macOS and
-<code>&#39;Windows_NT&#39;</code> on Windows.</p>
-<p>Please see <a href="https://en.wikipedia.org/wiki/Uname#Examples">https://en.wikipedia.org/wiki/Uname#Examples</a> for additional
-information about the output of running <a href="http://man7.org/linux/man-pages/man3/uname.3.html">uname(3)</a> on various operating systems.</p>
+<p><code>os.type()</code> 메서드는 <a href="http://man7.org/linux/man-pages/man3/uname.3.html">uname(3)</a>에서 반환되는 운영체제 이름을 식별하는 문자열을 반환합니다.
+ 예로 들어 리눅스에서는 <code>&#39;Linux&#39;</code>로, macOS에서는 <code>&#39;Darwin&#39;</code>로 그리고 Windows에서는
+<code>&#39;Windows_NT&#39;</code>로 반환합니다</p>
+<p>다양한 운영체제에서 실행중인 uname(3)의 출력에 대한 자세한 내용은 <a href="https://en.wikipedia.org/wiki/Uname#Examples">https://en.wikipedia.org/wiki/Uname#Examples</a> 을 참조하십시요. <a href="http://man7.org/linux/man-pages/man3/uname.3.html">uname(3)</a> 다양한 운영체제에 대해 설명합니다.</p>
 <h2>os.uptime()<span><a class="mark" href="#os_os_uptime" id="os_os_uptime">#</a></span></h2>
 <div class="api_metadata">
 <span>추가됨 : v0.3.3</span>
 </div><ul>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;integer&gt;</a></li>
 </ul>
-<p>The <code>os.uptime()</code> method returns the system uptime in number of seconds.</p>
-<p><em>Note</em>: On Windows the returned value includes fractions of a second.
-Use <code>Math.floor()</code> to get whole seconds.</p>
+<p><code>os.uptime()</code> 메소드는 시스템 가동 시간을 초 단위의 값을 반환합니다.</p>
+<p><em>메모</em>: Windows에서 반환되는 값은 1초의 분수를 포함합니다.
+ <code>Math.floor()</code>을 사용하여 전체 시간을 구합니다.</p>
 <h2>os.userInfo([options])<span><a class="mark" href="#os_os_userinfo_options" id="os_os_userinfo_options">#</a></span></h2>
 <div class="api_metadata">
 <span>추가됨 : v6.0.0</span>
 </div><ul>
 <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&lt;Object&gt;</a><ul>
-<li><code>encoding</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> Character encoding used to interpret resulting strings.
-If <code>encoding</code> is set to <code>&#39;buffer&#39;</code>, the <code>username</code>, <code>shell</code>, and <code>homedir</code>
+<li><code>encoding</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> 결과 문자열을 해석하는 데 사용되는 문자 인코딩.
+만약 <code>encoding</code>이 <code>&#39;buffer&#39;</code>로 설정된 경우 <code>username</code>, <code>shell</code>, and <code>homedir</code>
 values will be <code>Buffer</code> instances. (Default: &#39;utf8&#39;)</li>
 </ul>
 </li>
