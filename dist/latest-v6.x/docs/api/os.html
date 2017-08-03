@@ -436,78 +436,68 @@ uname(3). Windows 에서는, <code>GetVersionExW()</code> 가 사용됩니다. �
 </div><ul>
 <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&lt;Object&gt;</a><ul>
 <li><code>encoding</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> 결과 문자열을 해석하는 데 사용되는 문자 인코딩.
-만약 <code>encoding</code>이 <code>&#39;buffer&#39;</code>로 설정된 경우 <code>username</code>, <code>shell</code>, and <code>homedir</code>
-values will be <code>Buffer</code> instances. (Default: &#39;utf8&#39;)</li>
+만약 <code>encoding</code>이 <code>&#39;buffer&#39;</code>로 설정된 경우 <code>username</code>, <code>shell</code>, 그리고 <code>homedir</code>
+값은 <code>Buffer</code> 인스턴스가 됩니다. (기본값 : &#39;utf8&#39;)</li>
 </ul>
 </li>
 <li>Returns: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&lt;Object&gt;</a></li>
 </ul>
-<p>The <code>os.userInfo()</code> method returns information about the currently effective
-user -- on POSIX platforms, this is typically a subset of the password file. The
-returned object includes the <code>username</code>, <code>uid</code>, <code>gid</code>, <code>shell</code>, and <code>homedir</code>.
-On Windows, the <code>uid</code> and <code>gid</code> fields are <code>-1</code>, and <code>shell</code> is <code>null</code>.</p>
-<p>The value of <code>homedir</code> returned by <code>os.userInfo()</code> is provided by the operating
-system. This differs from the result of <code>os.homedir()</code>, which queries several
-environment variables for the home directory before falling back to the
-operating system response.</p>
-<h2>OS Constants<span><a class="mark" href="#os_os_constants_1" id="os_os_constants_1">#</a></span></h2>
-<p>The following constants are exported by <code>os.constants</code>. <strong>Note:</strong> Not all
-constants will be available on every operating system.</p>
-<h3>Signal Constants<span><a class="mark" href="#os_signal_constants" id="os_signal_constants">#</a></span></h3>
-<p>The following signal constants are exported by <code>os.constants.signals</code>:</p>
+<p><code>os.userInfo()</code> 메소드는 현재 POSIX 플랫폼에 대한 정보를 반환합니다. POSIX 플랫폼에서는 일반적으로 암호파일의 하위 집합입니다. 반환된 개체에는 <code>username</code>, <code>uid</code>, <code>gid</code>, <code>shell</code>, 그리고 <code>homedir</code>가 포함됩니다.
+Windows에서는 <code>uid</code> 및 <code>gid</code> 필드는 <code>-1</code>이고, <code>shell</code>은 <code>null</code>값을 가집니다.</p>
+<p><code>os.userInfo()</code>에서 반환되는 <code>homedir</code> 값은 운영체제에서 제공합니다. 이는 운영체제 응답으로 돌아가기 전의 홈 디렉토리에 대한여러 환경변수를 쿼리하는 <code>os.homedir()</code>의 결과와 다릅니다.</p>
+<h2>OS 상수들<span><a class="mark" href="#os_os_constants_1" id="os_os_constants_1">#</a></span></h2>
+<p><code>os.constants</code>에 의해 다음 상수들이 반환됩니다. <strong>메모:</strong> 모든 운영체제에서 일부 상수를 사용할 수 없습니다.</p>
+<h3>신호 상수<span><a class="mark" href="#os_signal_constants" id="os_signal_constants">#</a></span></h3>
+<p>다음 신호 상수들은 <code>os.constants.signals</code>에 의해 추출됩니다 :</p>
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>상수</th>
+    <th>서술</th>
   </tr>
   <tr>
     <td><code>SIGHUP</code></td>
-    <td>Sent to indicate when a controlling terminal is closed or a parent
-    process exits.</td>
+    <td>제어 단자가 닫혀 있거나 부모 프로세스가 종료되었음을 나타내기 위해 표시되었습니다.</td>
   </tr>
   <tr>
     <td><code>SIGINT</code></td>
-    <td>Sent to indicate when a user wishes to interrupt a process
+    <td>사용자가 프로세스를 중단하고자 하는 시점을 표시하기 위해 표시되었습니다
     (<code>(Ctrl+C)</code>).</td>
   </tr>
   <tr>
     <td><code>SIGQUIT</code></td>
-    <td>Sent to indicate when a user wishes to terminate a process and perform a
-    core dump.</td>
+    <td>사용자가 프로세스를 종료하고 코어 덤프를 수행하려는 시기를 나타내기 위해 표시되었습니다.</td>
   </tr>
   <tr>
     <td><code>SIGILL</code></td>
-    <td>Sent to a process to notify that it has attempted to perform an illegal,
-    malformed, unknown or privileged instruction.</td>
+    <td>잘못되었거나, 잘못된 형식이거나, 알 수 없는 값 또는 권한이 없는 명령을 수행하려는 시도한다는 내용을 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGTRAP</code></td>
-    <td>Sent to a process when an exception has occurred.</td>
+    <td>예외가 발생할 경우 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGABRT</code></td>
-    <td>Sent to a process to request that it abort.</td>
+    <td>프로세스가 중단되도록 요청하는 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGIOT</code></td>
-    <td>Synonym for <code>SIGABRT</code></td>
+    <td><code>SIGABRT</code> 동의어</td>
   </tr>
   <tr>
     <td><code>SIGBUS</code></td>
-    <td>Sent to a process to notify that it has caused a bus error.</td>
+    <td>버스 오류가 발생했음을 알리는 프로세스를 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGFPE</code></td>
-    <td>Sent to a process to notify that it has performed an illegal arithmetic
-    operation.</td>
+    <td>허가되지 않은 산술 연산을 수행했음을 알리는 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGKILL</code></td>
-    <td>Sent to a process to terminate it immediately.</td>
+    <td>즉시 종료하는 프로세스를 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGUSR1</code> <code>SIGUSR2</code></td>
-    <td>Sent to a process to identify user-defined conditions.</td>
+    <td>사용자 정의 조건을 식별하는 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGSEGV</code></td>
