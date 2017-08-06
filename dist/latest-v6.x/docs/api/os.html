@@ -501,189 +501,181 @@ Windows에서는 <code>uid</code> 및 <code>gid</code> 필드는 <code>-1</code>
   </tr>
   <tr>
     <td><code>SIGSEGV</code></td>
-    <td>Sent to a process to notify of a segmentation fault.</td>
+    <td>세분화 오류를 알리는 프로세르로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGPIPE</code></td>
-    <td>Sent to a process when it has attempted to write to a disconnected
-    pipe.</td>
+    <td>연결이 끊어진 상태로 쓰려고 시도한 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGALRM</code></td>
-    <td>Sent to a process when a system timer elapses.</td>
+    <td>시스템 타이머가 경과하면 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGTERM</code></td>
-    <td>Sent to a process to request termination.</td>
+    <td>종료를 요청하는 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGCHLD</code></td>
-    <td>Sent to a process when a child process terminates.</td>
+    <td>자식 프로세스가 종료될때 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGSTKFLT</code></td>
-    <td>Sent to a process to indicate a stack fault on a coprocessor.</td>
+    <td>보조 프로세서에서 스택 오류를 나타내는 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGCONT</code></td>
-    <td>Sent to instruct the operating system to continue a paused process.</td>
+    <td>일시 중지된 프로세스를 지속하도록 운영체제에 지시하려면 전송.</td>
   </tr>
   <tr>
     <td><code>SIGSTOP</code></td>
-    <td>Sent to instruct the operating system to halt a process.</td>
+    <td>프로세스를 중지하도록 운영체제에 지시하려면 전송.</td>
   </tr>
   <tr>
     <td><code>SIGTSTP</code></td>
-    <td>Sent to a process to request it to stop.</td>
+    <td>중지하도록 요청하는 프로세스로 전송.</td>
   </tr>
   <tr>
     <td><code>SIGBREAK</code></td>
-    <td>Sent to indicate when a user wishes to interrupt a process.</td>
+    <td>사용자가 프로세스를 중단하려는 시기를 표시하기 위해 전송.</td>
   </tr>
   <tr>
     <td><code>SIGTTIN</code></td>
-    <td>Sent to a process when it reads from the TTY while in the
-    background.</td>
+    <td>백그라운드에서 TTY를 읽을 때 프로세스로 전송.</td>
   </tr>
   <tr>
     <td><code>SIGTTOU</code></td>
-    <td>Sent to a process when it writes to the TTY while in the
-    background.</td>
+    <td>백그라운드에서 TTY에 쓰는 동안 프로세스로 전송.</td>
   </tr>
   <tr>
     <td><code>SIGURG</code></td>
-    <td>Sent to a process when a socket has urgent data to read.</td>
+    <td>소켓에 긴급하게 읽을 데이터가 있을 때 프로세스로 전송.</td>
   </tr>
   <tr>
     <td><code>SIGXCPU</code></td>
-    <td>Sent to a process when it has exceeded its limit on CPU usage.</td>
+    <td>CPU 사용량 한도를 초과한 프로세스로 전송.</td>
   </tr>
   <tr>
     <td><code>SIGXFSZ</code></td>
-    <td>Sent to a process when it grows a file larger than the maximum
-    allowed.</td>
+    <td>허용된 최대 크기보다 파일이 커지면 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGVTALRM</code></td>
-    <td>Sent to a process when a virtual timer has elapsed.</td>
+    <td>가상 타이머가 경과하면 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGPROF</code></td>
-    <td>Sent to a process when a system timer has elapsed.</td>
+    <td>시스템 타이머가 경과하면 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGWINCH</code></td>
-    <td>Sent to a process when the controlling terminal has changed its
-    size.</td>
+    <td>제어터미널의 크기가 변경되면 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGIO</code></td>
-    <td>Sent to a process when I/O is available.</td>
+    <td>입출력이 가능한 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGPOLL</code></td>
-    <td>Synonym for <code>SIGIO</code></td>
+    <td><code>SIGIO</code>의 동의어</td>
   </tr>
   <tr>
     <td><code>SIGLOST</code></td>
-    <td>Sent to a process when a file lock has been lost.</td>
+    <td>파일 잠금이 손실되었을 때 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGPWR</code></td>
-    <td>Sent to a process to notify of a power failure.</td>
+    <td>전원 장애를 알리는 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGINFO</code></td>
-    <td>Synonym for <code>SIGPWR</code></td>
+    <td><code>SIGPWR</code>의 동의어</td>
   </tr>
   <tr>
     <td><code>SIGSYS</code></td>
-    <td>Sent to a process to notify of a bad argument.</td>
+    <td>잘못된 인수를 알리는 프로세스로 전송함.</td>
   </tr>
   <tr>
     <td><code>SIGUNUSED</code></td>
-    <td>Synonym for <code>SIGSYS</code></td>
+    <td><code>SIGSYS</code>의 동의어</td>
   </tr>
 </table>
 
-<h3>Error Constants<span><a class="mark" href="#os_error_constants" id="os_error_constants">#</a></span></h3>
-<p>The following error constants are exported by <code>os.constants.errno</code>:</p>
-<h4>POSIX Error Constants<span><a class="mark" href="#os_posix_error_constants" id="os_posix_error_constants">#</a></span></h4>
+<h3>오류 상수<span><a class="mark" href="#os_error_constants" id="os_error_constants">#</a></span></h3>
+<p><code>os.constants.errno</code>에 의해 다음 오류 상수가 출력됩니다 :</p>
+<h4>POSIX 오류 상수<span><a class="mark" href="#os_posix_error_constants" id="os_posix_error_constants">#</a></span></h4>
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>상수</th>
+    <th>서술</th>
   </tr>
   <tr>
     <td><code>E2BIG</code></td>
-    <td>Indicates that the list of arguments is longer than expected.</td>
+    <td>인수 목록이 예상보다 긴 것을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EACCES</code></td>
-    <td>Indicates that the operation did not have sufficient permissions.</td>
+    <td>작업에 충분한 사용 권한이 없음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EADDRINUSE</code></td>
-    <td>Indicates that the network address is already in use.</td>
+    <td>네트워크 주소가 이미 사용 중임을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EADDRNOTAVAIL</code></td>
-    <td>Indicates that the network address is currently unavailable for
-    use.</td>
+    <td>현재 네트워크 주소를 사용할 수 없음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EAFNOSUPPORT</code></td>
-    <td>Indicates that the network address family is not supported.</td>
+    <td>Network Address family를 지원하지 않음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EAGAIN</code></td>
-    <td>Indicates that there is currently no data available and to try the
-    operation again later.</td>
+    <td>현재 사용할 수 있는 데이터가 없으며 나중에 다시 시도할 수 있음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EALREADY</code></td>
-    <td>Indicates that the socket already has a pending connection in
-    progress.</td>
+    <td>소켓에 진행 중인 연결이 이미 진행 중임을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EBADF</code></td>
-    <td>Indicates that a file descriptor is not valid.</td>
+    <td>파일 디스크립터가 올바르지 않음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EBADMSG</code></td>
-    <td>Indicates an invalid data message.</td>
+    <td>잘못된 데이터 메세지를 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EBUSY</code></td>
-    <td>Indicates that a device or resource is busy.</td>
+    <td>디바이스 또는 리소스가 사용중임을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>ECANCELED</code></td>
-    <td>Indicates that an operation was canceled.</td>
+    <td>작업이 취소되었음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>ECHILD</code></td>
-    <td>Indicates that there are no child processes.</td>
+    <td>하위 프로세스가 없음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>ECONNABORTED</code></td>
-    <td>Indicates that the network connection has been aborted.</td>
+    <td>네트워크 연결이 중단되었음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>ECONNREFUSED</code></td>
-    <td>Indicates that the network connection has been refused.</td>
+    <td>네트워크 연결이 거부되었음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>ECONNRESET</code></td>
-    <td>Indicates that the network connection has been reset.</td>
+    <td>네트워크 연결이 재설정되었음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EDEADLK</code></td>
-    <td>Indicates that a resource deadlock has been avoided.</td>
+    <td>리소스 교착 상태가 방지되었음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EDESTADDRREQ</code></td>
-    <td>Indicates that a destination address is required.</td>
+    <td>대상 주소가 필요함을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EDOM</code></td>
