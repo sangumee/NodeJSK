@@ -860,182 +860,181 @@ Windows에서는 <code>uid</code> 및 <code>gid</code> 필드는 <code>-1</code>
   <tr>
     <td><code>EOPNOTSUPP</code></td>
     <td>소켓에서 작업이 지원되지 않음을 나타냅니다.
-    Note that while <code>ENOTSUP</code> and <code>EOPNOTSUPP</code> have the same value on Linux,
-    according to POSIX.1 these error values should be distinct.)</td>
+    메모 : <code>ENOTSUP</code> 그리고 <code>EOPNOTSUPP</code> 는 리눅스에서 동일한 값을 사용합니다 ,
+    POSIX.1에 따르면 에러 값은 분명해야합니다.)</td>
   </tr>
   <tr>
     <td><code>EOVERFLOW</code></td>
-    <td>Indicates that a value is too large to be stored in a given data
-    type.</td>
+    <td>값이 너무 커서 지정된 데이터 유형에 저장할 수 없음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EPERM</code></td>
-    <td>Indicates that the operation is not permitted.</td>
+    <td>작업이 허용되지 않음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EPIPE</code></td>
-    <td>Indicates a broken pipe.</td>
+    <td>pipe가 깨졌음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EPROTO</code></td>
-    <td>Indicates a protocol error.</td>
+    <td>프로토콜 오류를 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EPROTONOSUPPORT</code></td>
-    <td>Indicates that a protocol is not supported.</td>
+    <td>프로토콜이 지원되지 않음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EPROTOTYPE</code></td>
-    <td>Indicates the wrong type of protocol for a socket.</td>
+    <td>소켓에 대한 잘못된 유형의 프로토콜을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>ERANGE</code></td>
-    <td>Indicates that the results are too large.</td>
+    <td>결과값이 너무 큼을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EROFS</code></td>
-    <td>Indicates that the file system is read only.</td>
+    <td>파일 시스템이 읽기 전용임을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>ESPIPE</code></td>
-    <td>Indicates an invalid seek operation.</td>
+    <td>잘못된 탐색 작업을 수행하였음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>ESRCH</code></td>
-    <td>Indicates that there is no such process.</td>
+    <td>프로세스가 존재하지 않음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>ESTALE</code></td>
-    <td>Indicates that the file handle is stale.</td>
+    <td>파일 핸들값이 유효하지 않음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>ETIME</code></td>
-    <td>Indicates an expired timer.</td>
+    <td>타이머가 만료되었음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>ETIMEDOUT</code></td>
-    <td>Indicates that the connection timed out.</td>
+    <td>연결시간이 초과하였음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>ETXTBSY</code></td>
-    <td>Indicates that a text file is busy.</td>
+    <td>텍스트 파일이 사용중임을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EWOULDBLOCK</code></td>
-    <td>Indicates that the operation would block.</td>
+    <td>작업이 차단됨을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>EXDEV</code></td>
-    <td>Indicates an improper link.
+    <td>부적절한 링크를 나타냅니다.
   </tr>
 </table>
 
-<h4>Windows Specific Error Constants<span><a class="mark" href="#os_windows_specific_error_constants" id="os_windows_specific_error_constants">#</a></span></h4>
-<p>The following error codes are specific to the Windows operating system:</p>
+<h4>Windows 특정 오류 상수<span><a class="mark" href="#os_windows_specific_error_constants" id="os_windows_specific_error_constants">#</a></span></h4>
+<p>다음 오류 코드들은 Windows 운영체제에서만 해당됩니다 :</p>
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>상수</th>
+    <th>서술</th>
   </tr>
   <tr>
     <td><code>WSAEINTR</code></td>
-    <td>Indicates an interrupted function call.</td>
+    <td>인터럽트 된 함수 호출을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAEBADF</code></td>
-    <td>Indicates an invalid file handle.</td>
+    <td>잘못된 파일 핸들값을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAEACCES</code></td>
-    <td>Indicates insufficient permissions to complete the operation.</td>
+    <td>작업을 완료 할 수 있는 권한이 없음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAEFAULT</code></td>
-    <td>Indicates an invalid pointer address.</td>
+    <td>잘못된 포인터 주소를 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAEINVAL</code></td>
-    <td>Indicates that an invalid argument was passed.</td>
+    <td>무효 인 인수가 값을 반환받았음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAEMFILE</code></td>
-    <td>Indicates that there are too many open files.</td>
+    <td>열려 있는 파일이 너무 많음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAEWOULDBLOCK</code></td>
-    <td>Indicates that a resource is temporarily unavailable.</td>
+    <td>리소스를 일시적으로 사용할수 없음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAEINPROGRESS</code></td>
-    <td>Indicates that an operation is currently in progress.</td>
+    <td>작업이 현재 진행 중임을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAEALREADY</code></td>
-    <td>Indicates that an operation is already in progress.</td>
+    <td>작업이 이미 진행 중임을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAENOTSOCK</code></td>
-    <td>Indicates that the resource is not a socket.</td>
+    <td>리소스가 소켓이 아님을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAEDESTADDRREQ</code></td>
-    <td>Indicates that a destination address is required.</td>
+    <td>대상 주소가 필요함을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAEMSGSIZE</code></td>
-    <td>Indicates that the message size is too long.</td>
+    <td>메세지의 크기가 너무 깁니다.</td>
   </tr>
   <tr>
     <td><code>WSAEPROTOTYPE</code></td>
-    <td>Indicates the wrong protocol type for the socket.</td>
+    <td>소켓의 잘못된 프로토콜 유형을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAENOPROTOOPT</code></td>
-    <td>Indicates a bad protocol option.</td>
+    <td>잘못된 프로토콜 옵션을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAEPROTONOSUPPORT</code></td>
-    <td>Indicates that the protocol is not supported.</td>
+    <td>프로토콜이 지원되지 않음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAESOCKTNOSUPPORT</code></td>
-    <td>Indicates that the socket type is not supported.</td>
+    <td>소켓 유형이 지원되지 않음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAEOPNOTSUPP</code></td>
-    <td>Indicates that the operation is not supported.</td>
+    <td>작업이 지원되지 않음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAEPFNOSUPPORT</code></td>
-    <td>Indicates that the protocol family is not supported.</td>
+    <td>프로토콜 family가 지원되지 않음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAEAFNOSUPPORT</code></td>
-    <td>Indicates that the address family is not supported.</td>
+    <td>주소 family가 지원되지 않음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAEADDRINUSE</code></td>
-    <td>Indicates that the network address is already in use.</td>
+    <td>네트워크 주소가 이미 사용 중임을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAEADDRNOTAVAIL</code></td>
-    <td>Indicates that the network address is not available.</td>
+    <td>네트워크 주소를 사용할 수 없음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAENETDOWN</code></td>
-    <td>Indicates that the network is down.</td>
+    <td>네트워크가 다운되었음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAENETUNREACH</code></td>
-    <td>Indicates that the network is unreachable.</td>
+    <td>네트워크에 도달 할 수 없음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAENETRESET</code></td>
-    <td>Indicates that the network connection has been reset.</td>
+    <td>네트워크 연결이 재설정되었음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAECONNABORTED</code></td>
-    <td>Indicates that the connection has been aborted.</td>
+    <td>연결이 중단되었음을 나타냅니다.</td>
   </tr>
   <tr>
     <td><code>WSAECONNRESET</code></td>
