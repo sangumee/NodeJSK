@@ -100,47 +100,25 @@
       <div id="apicontent">
         <h1>이 문서에 대하여<span><a class="mark" href="#documentation_about_this_documentation" id="documentation_about_this_documentation">#</a></span></h1>
 <!-- type=misc -->
-<p>The goal of this documentation is to comprehensively explain the Node.js
-API, both from a reference as well as a conceptual point of view.  Each
-section describes a built-in module or high-level concept.</p>
-<p>Where appropriate, property types, method arguments, and the arguments
-provided to event handlers are detailed in a list underneath the topic
-heading.</p>
-<p>Every <code>.html</code> document has a corresponding <code>.json</code> document presenting
-the same information in a structured manner.  This feature is
-experimental, and added for the benefit of IDEs and other utilities that
-wish to do programmatic things with the documentation.</p>
-<p>Every <code>.html</code> and <code>.json</code> file is generated based on the corresponding
-<code>.md</code> file in the <code>doc/api/</code> folder in Node.js&#39;s source tree.  The
-documentation is generated using the <code>tools/doc/generate.js</code> program.
-The HTML template is located at <code>doc/template.html</code>.</p>
-<p>If you find an error in this documentation, please <a href="https://github.com/nodejs/node/issues/new">submit an issue</a>
-or see <a href="https://github.com/nodejs/node/blob/master/CONTRIBUTING.md">the contributing guide</a> for directions on how to submit a patch.</p>
-<h2>Stability Index<span><a class="mark" href="#documentation_stability_index" id="documentation_stability_index">#</a></span></h2>
+<p>이 문서의 목표는 Node.js API를 포괄적으로 설명하는 것입니다. 이 API는 참조와 개념적 관점에서 모두 설명됩니다. 각 섹션은 내장 모듈 또는 고급 개념을 설명합니다.</p>
+<p>적절한 경우, 이벤트 핸들러에 제공된 특성 유형, 메소드 인수 및 인수는 주제 표제 아래에 있는 목록에 자세히 설명됩니다.<p>
+<p>모든 <code>.html</code>문서에는 구조화 된 방식으로 동일한 정보를 나타내는 해당 <code>.json</code> 문서가 제공됩니다.  이 기능은 실험적이며 설명서 및 프로그래밍 관련 작업을 수행하려는 IDE 및 기타 유틸리티들을 위해 추가되었습니다.</p>
+<p>모든 <code>.html</code> 및 <code>.json</code> 파일에는 Node.js 소스 트리의 <code>doc/api/</code> 폴더에있는 해당
+<code>.md</code> 파일을 기반으로 생성됩니다. 이 문서는 <code>tools/doc/generate.js</code> 프로그램을 통하여 생성됩니다.
+HTML템플릿은 <code>doc/template.html</code>에 위치합니다.</p>
+<p>이 문서에서 오류를 발견한 경우, <a href="https://github.com/nodejs/node/issues/new">이슈 제출</a>
+또는 <a href="https://github.com/nodejs/node/blob/master/CONTRIBUTING.md">공헌 지침</a> 을 통하여 패치 제출 방법을 참조하십시요,</p>
+<h2>안정 지수<span><a class="mark" href="#documentation_stability_index" id="documentation_stability_index">#</a></span></h2>
 <!--type=misc-->
-<p>Throughout the documentation, you will see indications of a section&#39;s
-stability.  The Node.js API is still somewhat changing, and as it
-matures, certain parts are more reliable than others.  Some are so
-proven, and so relied upon, that they are unlikely to ever change at
-all.  Others are brand new and experimental, or known to be hazardous
-and in the process of being redesigned.</p>
-<p>The stability indices are as follows:</p>
-<pre class="api_stability api_stability_0"><a href="documentation.html#documentation_stability_index">Stability: 0</a> - Deprecated This feature is known to be problematic, and changes are planned.  Do not rely on it.  Use of the feature may cause warnings.  Backwards compatibility should not be expected.</pre><pre class="api_stability api_stability_1"><a href="documentation.html#documentation_stability_index">Stability: 1</a> - Experimental This feature is subject to change, and is gated by a command line flag. It may change or be removed in future versions.</pre><pre class="api_stability api_stability_2"><a href="documentation.html#documentation_stability_index">Stability: 2</a> - Stable The API has proven satisfactory. Compatibility with the npm ecosystem is a high priority, and will not be broken unless absolutely necessary.</pre><h2>JSON Output<span><a class="mark" href="#documentation_json_output" id="documentation_json_output">#</a></span></h2>
-<pre class="api_stability api_stability_1"><a href="documentation.html#documentation_stability_index">Stability: 1</a> - Experimental</pre><p>Every HTML file in the markdown has a corresponding JSON file with the
-same data.</p>
-<p>This feature was added in Node.js v0.6.12.  It is experimental.</p>
-<h2>Syscalls and man pages<span><a class="mark" href="#documentation_syscalls_and_man_pages" id="documentation_syscalls_and_man_pages">#</a></span></h2>
-<p>System calls like <a href="http://man7.org/linux/man-pages/man2/open.2.html">open(2)</a> and <a href="http://man7.org/linux/man-pages/man2/read.2.html">read(2)</a> define the interface between user programs
-and the underlying operating system. Node functions which simply wrap a syscall,
-like <code>fs.open()</code>, will document that. The docs link to the corresponding man
-pages (short for manual pages) which describe how the syscalls work.</p>
-<p><strong>Caveat:</strong> some syscalls, like <a href="http://man7.org/linux/man-pages/man2/lchown.2.html">lchown(2)</a>, are BSD-specific. That means, for
-example, that <code>fs.lchown()</code> only works on macOS and other BSD-derived systems,
-and is not available on Linux.</p>
-<p>Most Unix syscalls have Windows equivalents, but behavior may differ on Windows
-relative to Linux and macOS. For an example of the subtle ways in which it&#39;s
-sometimes impossible to replace Unix syscall semantics on Windows, see <a href="https://github.com/nodejs/node/issues/4760">Node
-issue 4760</a>.</p>
+<p>전체의 문서에서 섹션의 안정성에 대한 표시가 나타납니다. Node.js API는 여전히 변화중이며 안정도에 따라 특정 부분은 다른 부분보다 더 안정적입니다. 어떤 부분은 강한 의존성을 가지고 있기 때문에 전혀 변하지 않을 것입니다. 하지만 어떤 부분에 대해서는 아주 새롭고 실험적이거나 유해할수 있는 재설계의 과정에 있을수 있습니다.</p>
+<p>안정성 지수는 다음과 같습니다 :</p>
+<pre class="api_stability api_stability_0"><a href="documentation.html#documentation_stability_index">안정성 : 0</a> - 이 기능은 문제가 있는 것으로 알려져 있으며, 변경 사항이 계획되어 있습니다. 사용하지 않는것을 권장합니다. 이 기능을 사용하면 경고가 발생할 수 있습니다. 호환성을 기대해서는 안됩니다.</pre><pre class="api_stability api_stability_1"><a href="documentation.html#documentation_stability_index">안정성 : 1</a> - 이 기능은 변경될 수 있으며 명령줄 플래그에 의해서 gate 됩니다. 향후 버전에서 변경되거나 제거될 수 있습니다.</pre><pre class="api_stability api_stability_2"><a href="documentation.html#documentation_stability_index">안정성 : 2</a> - API가 안정적인것으로 입증되었습니다. npm 에코 시스템과의 호환성은 높은 우선 순위를 가지며 심각한 문제가 발생하지 않을 경우에는 지원이 중단되지 않습니다.</pre><h2>JSON 출력<span><a class="mark" href="#documentation_json_output" id="documentation_json_output">#</a></span></h2>
+<pre class="api_stability api_stability_1"><a href="documentation.html#documentation_stability_index">안정성 : 1</a> - 실험적</pre><p>마크다운의 모든 HTML 파일에는 동일한 데이터가 있는 해당 JSON파일이 존재합니다.</p>
+<p>이 기능은 Node.js v0.6.12에서 추가되었습니다. 이 기능은 실험적 기능입니다.</p>
+<h2>Syscalls 및 man 페이지들<span><a class="mark" href="#documentation_syscalls_and_man_pages" id="documentation_syscalls_and_man_pages">#</a></span></h2>
+<p><a href="http://man7.org/linux/man-pages/man2/open.2.html">open(2)</a> 및 <a href="http://man7.org/linux/man-pages/man2/read.2.html">read(2)</a> 같은 시스템 호출은 사용자 프로그램과 기본 운영체제 간의 인터페이스를 정의합니다. <code>fs.open()</code>과 같이 단순히 시스템 호출을 감싸는 노드 함수는 이를 문서화합니다. syscall의 작동방법을 설명하는 해당 man 페이지(메뉴얼 페이지의 약자)에 문서가 링크됩니다.</p>
+<p><strong>주의 사항 : </strong><a href="http://man7.org/linux/man-pages/man2/lchown.2.html">lchown(2)</a>과 같은 일부 시스템 호출은 BSD에 특정적입니다. 즉 <code>fs.lchown()</code>은 macOS 및 기타 BSD 파생 시스템에서만 작동하며 Linux에서는 사용할 수 없습니다.</p>
+<p>대부분의 유닉스 시스템 호출은 Windows와 동일하지만, Linux와 macOS에 비해 Windows에서의 동작이 다를 수 있습니다. Windows에서 Unix syscall 의미를 대체할수 없는 사소한 방법의 예시를 보려면 <a href="https://github.com/nodejs/node/issues/4760">Node 이슈 4760</a>을 참조하십시오.</p>
 
       </div>
     </div>
