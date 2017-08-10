@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="utf-8">
   <title>Node.js</title>
@@ -29,11 +28,11 @@
   <meta name="twitter:image" content="/static/images/logo-hexagon.png">
   <meta name="twitter:image:alt" content="The Node.js Hexagon Logo">
 
-  <link rel="canonical" href="https://nodejs.org/en/blog/">
-  <link rel="alternate" href="/en/feed/blog.xml" title="Node.js Blog" type="application/rss+xml">
-  <link rel="alternate" href="/en/feed/releases.xml" title="Node.js Blog: Releases" type="application/rss+xml">
-  <link rel="alternate" href="/en/feed/vulnerability.xml" title="Node.js Blog: Vulnerability Reports" type="application/rss+xml">
-  <link rel="alternate" href="/en/feed/tsc-minutes.xml" title="Node.js TSC meeting minutes" type="application/rss+xml">
+  <link rel="canonical" href="http://nodejsk.com/blog/">
+  <link rel="alternate" href="/feed/blog.xml" title="Node.js Blog" type="application/rss+xml">
+  <link rel="alternate" href="/feed/releases.xml" title="Node.js Blog: Releases" type="application/rss+xml">
+  <link rel="alternate" href="/feed/vulnerability.xml" title="Node.js Blog: Vulnerability Reports" type="application/rss+xml">
+  <link rel="alternate" href="/feed/tsc-minutes.xml" title="Node.js TSC meeting minutes" type="application/rss+xml">
   <link rel="stylesheet" href="/layouts/css/styles.css" media="all">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600">
   <script>
@@ -45,7 +44,7 @@
   <header>
     <div class="container">
 
-      <a href="/en" id="logo">
+      <a href="/" id="logo">
         <img src="/static/images/logo.svg" alt="node.js">
       </a>
 
@@ -89,7 +88,7 @@
       <ul class="blog-index">
           <li>
             <time datetime="Tue Jul 11 2017 17:01:31 GMT+0000 (UTC)">11 Jul</time>
-            <a href="/en/blog/release/v8.1.4/">Node v8.1.4 (Current)</a>
+            <a href="/blog/release/v8.1.4/">Node v8.1.4 (Current)</a>
 
               <div class="summary">
                 <ul>
@@ -101,12 +100,12 @@
 <li>CVE-2017-1000381 - The c-ares function ares_parse_naptr_reply(), which is used for parsing NAPTR responses, could be triggered to read memory outside of the given input buffer if the passed in DNS response packet was crafted in a particular way. This patch checks that there is enough data for the required elements of an NAPTR record (2 int16, 3 bytes for string lengths) before processing a record. (David Drysdale)</li>
 </ul>
 </li>
-</ul><p><a href='/en/blog/release/v8.1.4/'>Read more...</a></p>
+</ul><p><a href='/blog/release/v8.1.4/'>Read more...</a></p>
               </div>
           </li>
           <li>
             <time datetime="Tue Jul 11 2017 17:01:21 GMT+0000 (UTC)">11 Jul</time>
-            <a href="/en/blog/release/v7.10.1/">Node v7.10.1 (Current)</a>
+            <a href="/blog/release/v7.10.1/">Node v7.10.1 (Current)</a>
 
               <div class="summary">
                 <ul>
@@ -128,20 +127,20 @@ int16, 3 bytes for string lengths) before processing a record. (David
 Drysdale)</li>
 </ul>
 </li>
-</ul><p><a href='/en/blog/release/v7.10.1/'>Read more...</a></p>
+</ul><p><a href='/blog/release/v7.10.1/'>Read more...</a></p>
               </div>
           </li>
           <li>
             <time datetime="Tue Jul 11 2017 17:00:00 GMT+0000 (UTC)">11 Jul</time>
-            <a href="/en/blog/vulnerability/july-2017-security-releases/">Security updates for all active release lines, July 2017</a>
+            <a href="/blog/vulnerability/july-2017-security-releases/">Security updates for all active release lines, July 2017</a>
 
               <div class="summary">
-                <p>Updates are now available for all active Node.js release lines as well as the 7.x line.  These include the fix for the high severity vulnerability identified in the initial announcement, one additional lower priority Node.js vulnerability in the 4.x release line, as well as some lower priority fixes for Node.js dependencies across the current release lines.</p><p><a href='/en/blog/vulnerability/july-2017-security-releases/'>Read more...</a></p>
+                <p>Updates are now available for all active Node.js release lines as well as the 7.x line.  These include the fix for the high severity vulnerability identified in the initial announcement, one additional lower priority Node.js vulnerability in the 4.x release line, as well as some lower priority fixes for Node.js dependencies across the current release lines.</p><p><a href='/blog/vulnerability/july-2017-security-releases/'>Read more...</a></p>
               </div>
           </li>
           <li>
             <time datetime="Tue Jul 11 2017 16:53:50 GMT+0000 (UTC)">11 Jul</time>
-            <a href="/en/blog/release/v6.11.1/">Node v6.11.1 (LTS)</a>
+            <a href="/blog/release/v6.11.1/">Node v6.11.1 (LTS)</a>
 
               <div class="summary">
                 <ul>
@@ -153,12 +152,12 @@ Drysdale)</li>
 <li>CVE-2017-1000381 - The c-ares function ares_parse_naptr_reply(), which is used for parsing NAPTR responses, could be triggered to read memory outside of the given input buffer if the passed in DNS response packet was crafted in a particular way. This patch checks that there is enough data for the required elements of an NAPTR record (2 int16, 3 bytes for string lengths) before processing a record. (David Drysdale)</li>
 </ul>
 </li>
-</ul><p><a href='/en/blog/release/v6.11.1/'>Read more...</a></p>
+</ul><p><a href='/blog/release/v6.11.1/'>Read more...</a></p>
               </div>
           </li>
           <li>
             <time datetime="Tue Jul 11 2017 16:53:46 GMT+0000 (UTC)">11 Jul</time>
-            <a href="/en/blog/release/v4.8.4/">Node v4.8.4 (Maintenance)</a>
+            <a href="/blog/release/v4.8.4/">Node v4.8.4 (Maintenance)</a>
 
               <div class="summary">
                 <ul>
@@ -170,12 +169,12 @@ Drysdale)</li>
 <li>CVE-2017-1000381 - The c-ares function ares_parse_naptr_reply(), which is used for parsing NAPTR responses, could be triggered to read memory outside of the given input buffer if the passed in DNS response packet was crafted in a particular way. This patch checks that there is enough data for the required elements of an NAPTR record (2 int16, 3 bytes for string lengths) before processing a record. (David Drysdale)</li>
 </ul>
 </li>
-</ul><p><a href='/en/blog/release/v4.8.4/'>Read more...</a></p>
+</ul><p><a href='/blog/release/v4.8.4/'>Read more...</a></p>
               </div>
           </li>
           <li>
             <time datetime="Thu Jun 29 2017 07:05:09 GMT+0000 (UTC)">29 Jun</time>
-            <a href="/en/blog/release/v8.1.3/">Node v8.1.3 (Current)</a>
+            <a href="/blog/release/v8.1.3/">Node v8.1.3 (Current)</a>
 
               <div class="summary">
                 <ul>
@@ -190,12 +189,12 @@ if one is emitted:
 <a href="https://github.com/nodejs/node/pull/13760">#13760</a></li>
 </ul>
 </li>
-</ul><p><a href='/en/blog/release/v8.1.3/'>Read more...</a></p>
+</ul><p><a href='/blog/release/v8.1.3/'>Read more...</a></p>
               </div>
           </li>
           <li>
             <time datetime="Thu Jun 15 2017 12:44:42 GMT+0000 (UTC)">15 Jun</time>
-            <a href="/en/blog/release/v8.1.2/">Node v8.1.2 (Current)</a>
+            <a href="/blog/release/v8.1.2/">Node v8.1.2 (Current)</a>
 
               <div class="summary">
                 <p>Fix broken <code>process.release</code> properties in 8.1.1 causing failure to compile native add-ons on platforms other than Windows. This is a fix in the Node.js build process so there are no additional code commits included on top of 8.1.1.</p><p>Windows 32-bit Installer: <a href="https://nodejs.org/dist/v8.1.2/node-v8.1.2-x86.msi">https://nodejs.org/dist/v8.1.2/node-v8.1.2-x86.msi</a><br>
@@ -217,12 +216,12 @@ ARMv7 32-bit Binary: <a href="https://nodejs.org/dist/v8.1.2/node-v8.1.2-linux-a
 ARMv8 64-bit Binary: <a href="https://nodejs.org/dist/v8.1.2/node-v8.1.2-linux-arm64.tar.xz">https://nodejs.org/dist/v8.1.2/node-v8.1.2-linux-arm64.tar.xz</a><br>
 Source Code: <a href="https://nodejs.org/dist/v8.1.2/node-v8.1.2.tar.gz">https://nodejs.org/dist/v8.1.2/node-v8.1.2.tar.gz</a><br>
 Other release files: <a href="https://nodejs.org/dist/v8.1.2/">https://nodejs.org/dist/v8.1.2/</a><br>
-Documentation: <a href="https://nodejs.org/docs/v8.1.2/api/">https://nodejs.org/docs/v8.1.2/api/</a></p><p><a href='/en/blog/release/v8.1.2/'>Read more...</a></p>
+Documentation: <a href="https://nodejs.org/docs/v8.1.2/api/">https://nodejs.org/docs/v8.1.2/api/</a></p><p><a href='/blog/release/v8.1.2/'>Read more...</a></p>
               </div>
           </li>
           <li>
             <time datetime="Tue Jun 13 2017 22:33:22 GMT+0000 (UTC)">13 Jun</time>
-            <a href="/en/blog/release/v8.1.1/">Node v8.1.1 (Current)</a>
+            <a href="/blog/release/v8.1.1/">Node v8.1.1 (Current)</a>
 
               <div class="summary">
                 <ul>
@@ -258,12 +257,12 @@ multiple times on the same input stream is reverted.
 <a href="https://github.com/nodejs/node/pull/13560">#13560</a></li>
 </ul>
 </li>
-</ul><p><a href='/en/blog/release/v8.1.1/'>Read more...</a></p>
+</ul><p><a href='/blog/release/v8.1.1/'>Read more...</a></p>
               </div>
           </li>
           <li>
             <time datetime="Thu Jun 08 2017 11:05:04 GMT+0000 (UTC)">08 Jun</time>
-            <a href="/en/blog/release/v8.1.0/">Node v8.1.0 (Current)</a>
+            <a href="/blog/release/v8.1.0/">Node v8.1.0 (Current)</a>
 
               <div class="summary">
                 <ul>
@@ -305,12 +304,12 @@ subclasses <code>zlib.Deflate</code> and other Zlib classes has been fixed.
 <a href="https://github.com/nodejs/node/pull/13374">#13374</a>.</li>
 </ul>
 </li>
-</ul><p><a href='/en/blog/release/v8.1.0/'>Read more...</a></p>
+</ul><p><a href='/blog/release/v8.1.0/'>Read more...</a></p>
               </div>
           </li>
           <li>
             <time datetime="Tue Jun 06 2017 20:33:03 GMT+0000 (UTC)">06 Jun</time>
-            <a href="/en/blog/release/v6.11.0/">Node v6.11.0 (LTS)</a>
+            <a href="/blog/release/v6.11.0/">Node v6.11.0 (LTS)</a>
 
               <div class="summary">
                 <ul>
@@ -358,167 +357,167 @@ subclasses <code>zlib.Deflate</code> and other Zlib classes has been fixed.
 <li>Allow obvious key/passphrase combinations. (Sam Roberts) <a href="https://github.com/nodejs/node/pull/10294">#10294</a></li>
 </ul>
 </li>
-</ul><p><a href='/en/blog/release/v6.11.0/'>Read more...</a></p>
+</ul><p><a href='/blog/release/v6.11.0/'>Read more...</a></p>
               </div>
           </li>
           <li>
             <time datetime="Tue May 30 2017 18:52:01 GMT+0000 (UTC)">30 May</time>
-            <a href="/en/blog/release/v8.0.0/">Node v8.0.0 (Current)</a>
+            <a href="/blog/release/v8.0.0/">Node v8.0.0 (Current)</a>
 
           </li>
           <li>
             <time datetime="Wed May 03 2017 13:10:38 GMT+0000 (UTC)">03 May</time>
-            <a href="/en/blog/release/v7.10.0/">Node v7.10.0 (Current)</a>
+            <a href="/blog/release/v7.10.0/">Node v7.10.0 (Current)</a>
 
           </li>
           <li>
             <time datetime="Tue May 02 2017 18:11:20 GMT+0000 (UTC)">02 May</time>
-            <a href="/en/blog/release/v4.8.3/">Node v4.8.3 (Maintenance)</a>
+            <a href="/blog/release/v4.8.3/">Node v4.8.3 (Maintenance)</a>
 
           </li>
           <li>
             <time datetime="Tue May 02 2017 18:11:07 GMT+0000 (UTC)">02 May</time>
-            <a href="/en/blog/release/v6.10.3/">Node v6.10.3 (LTS)</a>
+            <a href="/blog/release/v6.10.3/">Node v6.10.3 (LTS)</a>
 
           </li>
           <li>
             <time datetime="Tue Apr 11 2017 19:22:46 GMT+0000 (UTC)">11 Apr</time>
-            <a href="/en/blog/release/v7.9.0/">Node v7.9.0 (Current)</a>
+            <a href="/blog/release/v7.9.0/">Node v7.9.0 (Current)</a>
 
           </li>
           <li>
             <time datetime="Tue Apr 04 2017 12:43:39 GMT+0000 (UTC)">04 Apr</time>
-            <a href="/en/blog/release/v4.8.2/">Node v4.8.2 (Maintenance)</a>
+            <a href="/blog/release/v4.8.2/">Node v4.8.2 (Maintenance)</a>
 
           </li>
           <li>
             <time datetime="Tue Apr 04 2017 12:36:54 GMT+0000 (UTC)">04 Apr</time>
-            <a href="/en/blog/release/v6.10.2/">Node v6.10.2 (LTS)</a>
+            <a href="/blog/release/v6.10.2/">Node v6.10.2 (LTS)</a>
 
           </li>
           <li>
             <time datetime="Wed Mar 29 2017 03:06:10 GMT+0000 (UTC)">29 Mar</time>
-            <a href="/en/blog/release/v7.8.0/">Node v7.8.0 (Current)</a>
+            <a href="/blog/release/v7.8.0/">Node v7.8.0 (Current)</a>
 
           </li>
           <li>
             <time datetime="Tue Mar 21 2017 22:06:12 GMT+0000 (UTC)">21 Mar</time>
-            <a href="/en/blog/release/v7.7.4/">Node v7.7.4 (Current)</a>
+            <a href="/blog/release/v7.7.4/">Node v7.7.4 (Current)</a>
 
           </li>
           <li>
             <time datetime="Tue Mar 21 2017 21:32:30 GMT+0000 (UTC)">21 Mar</time>
-            <a href="/en/blog/release/v6.10.1/">Node v6.10.1 (LTS)</a>
+            <a href="/blog/release/v6.10.1/">Node v6.10.1 (LTS)</a>
 
           </li>
           <li>
             <time datetime="Tue Mar 21 2017 21:32:25 GMT+0000 (UTC)">21 Mar</time>
-            <a href="/en/blog/release/v4.8.1/">Node v4.8.1 (LTS)</a>
+            <a href="/blog/release/v4.8.1/">Node v4.8.1 (LTS)</a>
 
           </li>
           <li>
             <time datetime="Tue Mar 14 2017 22:42:24 GMT+0000 (UTC)">14 Mar</time>
-            <a href="/en/blog/release/v7.7.3/">Node v7.7.3 (Current)</a>
+            <a href="/blog/release/v7.7.3/">Node v7.7.3 (Current)</a>
 
           </li>
           <li>
             <time datetime="Wed Mar 08 2017 22:27:59 GMT+0000 (UTC)">08 Mar</time>
-            <a href="/en/blog/release/v7.7.2/">Node v7.7.2 (Current)</a>
+            <a href="/blog/release/v7.7.2/">Node v7.7.2 (Current)</a>
 
           </li>
           <li>
             <time datetime="Thu Mar 02 2017 14:23:17 GMT+0000 (UTC)">02 Mar</time>
-            <a href="/en/blog/release/v7.7.1/">Node v7.7.1 (Current)</a>
+            <a href="/blog/release/v7.7.1/">Node v7.7.1 (Current)</a>
 
           </li>
           <li>
             <time datetime="Wed Mar 01 2017 03:05:14 GMT+0000 (UTC)">01 Mar</time>
-            <a href="/en/blog/release/v7.7.0/">Node v7.7.0 (Current)</a>
+            <a href="/blog/release/v7.7.0/">Node v7.7.0 (Current)</a>
 
           </li>
           <li>
             <time datetime="Tue Feb 28 2017 08:00:00 GMT+0000 (UTC)">28 Feb</time>
-            <a href="/en/blog/wg/diag-wg-update-2017-02/">Diag WG Update - Many new tools, phasing out some old ones</a>
+            <a href="/blog/wg/diag-wg-update-2017-02/">Diag WG Update - Many new tools, phasing out some old ones</a>
 
           </li>
           <li>
             <time datetime="Wed Feb 22 2017 15:48:48 GMT+0000 (UTC)">22 Feb</time>
-            <a href="/en/blog/release/v7.6.0/">Node v7.6.0 (Current)</a>
+            <a href="/blog/release/v7.6.0/">Node v7.6.0 (Current)</a>
 
           </li>
           <li>
             <time datetime="Wed Feb 22 2017 14:41:04 GMT+0000 (UTC)">22 Feb</time>
-            <a href="/en/blog/community/quality-with-speed/">Node.js - Quality with Speed</a>
+            <a href="/blog/community/quality-with-speed/">Node.js - Quality with Speed</a>
 
           </li>
           <li>
             <time datetime="Wed Feb 22 2017 02:11:30 GMT+0000 (UTC)">22 Feb</time>
-            <a href="/en/blog/release/v6.10.0/">Node v6.10.0 (LTS)</a>
+            <a href="/blog/release/v6.10.0/">Node v6.10.0 (LTS)</a>
 
           </li>
           <li>
             <time datetime="Wed Feb 22 2017 01:47:55 GMT+0000 (UTC)">22 Feb</time>
-            <a href="/en/blog/release/v4.8.0/">Node v4.8.0 (LTS)</a>
+            <a href="/blog/release/v4.8.0/">Node v4.8.0 (LTS)</a>
 
           </li>
           <li>
             <time datetime="Fri Feb 10 2017 12:00:00 GMT+0000 (UTC)">10 Feb</time>
-            <a href="/en/blog/weekly-updates/weekly-update.2017-02-10/">Weekly Update - February 10th, 2017</a>
+            <a href="/blog/weekly-updates/weekly-update.2017-02-10/">Weekly Update - February 10th, 2017</a>
 
           </li>
           <li>
             <time datetime="Wed Feb 01 2017 02:51:31 GMT+0000 (UTC)">01 Feb</time>
-            <a href="/en/blog/release/v7.5.0/">Node v7.5.0 (Current)</a>
+            <a href="/blog/release/v7.5.0/">Node v7.5.0 (Current)</a>
 
           </li>
           <li>
             <time datetime="Wed Feb 01 2017 01:04:43 GMT+0000 (UTC)">01 Feb</time>
-            <a href="/en/blog/release/v4.7.3/">Node v4.7.3 (LTS)</a>
+            <a href="/blog/release/v4.7.3/">Node v4.7.3 (LTS)</a>
 
           </li>
           <li>
             <time datetime="Wed Feb 01 2017 00:56:04 GMT+0000 (UTC)">01 Feb</time>
-            <a href="/en/blog/release/v6.9.5/">Node v6.9.5 (LTS)</a>
+            <a href="/blog/release/v6.9.5/">Node v6.9.5 (LTS)</a>
 
           </li>
           <li>
             <time datetime="Fri Jan 27 2017 11:49:06 GMT+0000 (UTC)">27 Jan</time>
-            <a href="/en/blog/vulnerability/openssl-january-2017/">OpenSSL update, 1.0.2k</a>
+            <a href="/blog/vulnerability/openssl-january-2017/">OpenSSL update, 1.0.2k</a>
 
           </li>
           <li>
             <time datetime="Thu Jan 26 2017 12:00:00 GMT+0000 (UTC)">26 Jan</time>
-            <a href="/en/blog/announcements/nodejs-certified-developer-program/">The Node.js Foundation Partners with The Linux Foundation on New Node.js Certification Program</a>
+            <a href="/blog/announcements/nodejs-certified-developer-program/">The Node.js Foundation Partners with The Linux Foundation on New Node.js Certification Program</a>
 
           </li>
           <li>
             <time datetime="Fri Jan 20 2017 09:00:00 GMT+0000 (UTC)">20 Jan</time>
-            <a href="/en/blog/community/2017-election/">Node.js Foundation Individual Membership Director election opens Friday, January 20</a>
+            <a href="/blog/community/2017-election/">Node.js Foundation Individual Membership Director election opens Friday, January 20</a>
 
           </li>
           <li>
             <time datetime="Thu Jan 05 2017 23:33:39 GMT+0000 (UTC)">05 Jan</time>
-            <a href="/en/blog/release/v6.9.4/">Node v6.9.4 (LTS)</a>
+            <a href="/blog/release/v6.9.4/">Node v6.9.4 (LTS)</a>
 
           </li>
           <li>
             <time datetime="Thu Jan 05 2017 23:02:13 GMT+0000 (UTC)">05 Jan</time>
-            <a href="/en/blog/release/v4.7.2/">Node v4.7.2 (LTS)</a>
+            <a href="/blog/release/v4.7.2/">Node v4.7.2 (LTS)</a>
 
           </li>
           <li>
             <time datetime="Wed Jan 04 2017 18:46:14 GMT+0000 (UTC)">04 Jan</time>
-            <a href="/en/blog/release/v7.4.0/">Node v7.4.0 (Current)</a>
+            <a href="/blog/release/v7.4.0/">Node v7.4.0 (Current)</a>
 
           </li>
           <li>
             <time datetime="Wed Jan 04 2017 00:13:29 GMT+0000 (UTC)">04 Jan</time>
-            <a href="/en/blog/release/v4.7.1/">Node v4.7.1 (LTS)</a>
+            <a href="/blog/release/v4.7.1/">Node v4.7.1 (LTS)</a>
 
           </li>
           <li>
             <time datetime="Wed Jan 04 2017 00:02:08 GMT+0000 (UTC)">04 Jan</time>
-            <a href="/en/blog/release/v6.9.3/">Node v6.9.3 (LTS)</a>
+            <a href="/blog/release/v6.9.3/">Node v6.9.3 (LTS)</a>
 
           </li>
       </ul>
@@ -527,7 +526,7 @@ subclasses <code>zlib.Deflate</code> and other Zlib classes has been fixed.
 
 
 
-            <a href="/en/blog/year-2016">Older &gt;</a>
+            <a href="/blog/year-2016">Older &gt;</a>
           </nav>
         </div>
       </div>
