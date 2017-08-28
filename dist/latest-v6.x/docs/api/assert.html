@@ -134,7 +134,8 @@
           <li><code>message</code> <span class="type">&lt;any&gt;</span></li>
         </ul>
         <p>실제 매개 변수와 예상 매개 변수가 동일하게 일치하는지 테스트합니다. 초기값은 등호 비교 연산자 ( == ) 와 비교되어 사용됩니다.</p>
-        <p>나열 가능한 &quot;소유&quot; 속성만 고려됩니다. <code>deepEqual()</code> 구현 객체 프로토 타입, 첨부된 심볼 또는 열거 불가능한 속성의 경우 테스트하지 않습니다. 이로 인해 잠재적으로 예측 불가능한 결과값이 출력될수 있습니다. 예로 들어 다음 예제에서는 <a href="errors.html#errors_class_error"><code>Error</code></a> 객체의 속성이 나열되지 않기 때문에 <code>AssertionError</code>을 반환하지 않습니다 :</p>
+        <p>나열 가능한 &quot;소유&quot; 속성만 고려됩니다. <code>deepEqual()</code> 구현 객체 프로토 타입, 첨부된 심볼 또는 열거 불가능한 속성의 경우 테스트하지 않습니다. 이로 인해 잠재적으로 예측 불가능한 결과값이 출력될수 있습니다. 예로 들어 다음 예제에서는 <a href="errors.html#errors_class_error"><code>Error</code></a> 객체의 속성이 나열되지 않기 때문에
+          <code>AssertionError</code>을 반환하지 않습니다 :</p>
         <pre><code class="lang-js">// WARNING: This does not throw an AssertionError!
 assert.deepEqual(Error(&#39;a&#39;), Error(&#39;b&#39;));
 </code></pre>
@@ -172,7 +173,7 @@ assert.deepEqual(obj1, obj4);
 // AssertionError: { a: { b: 1 } } deepEqual {}
 // Prototypes are ignored
 </code></pre>
-        <p>값이 동일하지 않으면 <code>message</code> 매개 변수의 값과 동일한 <code>message</code> 등록정보로  <code>AssertionError</code>가 발생합니다. 만약 <code>message</code> 매개 변수가 정의되지 않은 경우 기본 오류 메시지가 지정됩니다.</p>
+        <p>값이 동일하지 않으면 <code>message</code> 매개 변수의 값과 동일한 <code>message</code> 등록정보로 <code>AssertionError</code>가 발생합니다. 만약 <code>message</code> 매개 변수가 정의되지 않은 경우 기본 오류 메시지가 지정됩니다.</p>
         <h2>assert.deepStrictEqual(actual, expected[, message])<span><a class="mark" href="#assert_assert_deepstrictequal_actual_expected_message" id="assert_assert_deepstrictequal_actual_expected_message">#</a></span></h2>
         <div class="api_metadata">
           <span>추가됨 : v1.2.0</span>
@@ -192,8 +193,7 @@ assert.deepStrictEqual({ a: 1 }, { a: &#39;1&#39; });
 // AssertionError: { a: 1 } deepStrictEqual { a: &#39;1&#39; }
 // because 1 !== &#39;1&#39; using strict equality
 </code></pre>
-        <p>값이 동일하지 않으면, <code>AssertionError</code> is thrown with a <code>message</code> property set equal to the value of the <code>message</code> parameter. If the <code>message</code> parameter is undefined, a default error message
-          is assigned.</p>
+        <p>값이 동일하지 않으면, <code>message</code> 매개 변수의 값과 동일한 <code>message</code> 등록 정보로 <code>AssertionError</code> 가 발생합니다. <code>message</code> 매개 변수가 정의되지 않은 경우 기본 오류 메시지가 지정됩니다.</p>
         <h2>assert.doesNotThrow(block[, error][, message])<span><a class="mark" href="#assert_assert_doesnotthrow_block_error_message" id="assert_assert_doesnotthrow_block_error_message">#</a></span></h2>
         <div class="api_metadata">
           <span>추가됨 : v0.1.21</span>
@@ -204,13 +204,12 @@ assert.deepStrictEqual({ a: 1 }, { a: &#39;1&#39; });
               class="type">&lt;Function&gt;</a></li>
           <li><code>message</code> <span class="type">&lt;any&gt;</span></li>
         </ul>
-        <p>Asserts that the function <code>block</code> does not throw an error. See
-          <a href="#assert_assert_throws_block_error_message"><code>assert.throws()</code></a> for more details.</p>
-        <p>When <code>assert.doesNotThrow()</code> is called, it will immediately call the <code>block</code> function.
+        <p>함수 블럭이 오류를 발생시키지 않는다고 가정합니다. 자세한 내용은
+          <a href="#assert_assert_throws_block_error_message"><code>assert.throws()</code></a> 을 참고하십시오.</p>
+        <p><code>assert.doesNotThrow()</code>가 호출되면 즉시 <code>block</code> 함수가 호출됩니다.
         </p>
-        <p>If an error is thrown and it is the same type as that specified by the <code>error</code> parameter, then an <code>AssertionError</code> is thrown. If the error is of a different type, or if the <code>error</code> parameter is undefined, the error
-          is propagated back to the caller.</p>
-        <p>The following, for instance, will throw the <a href="errors.html#errors_class_typeerror"><code>TypeError</code></a> because there is no matching error type in the assertion:</p>
+        <p>오류가 발생하고 오류 매개 변수에 지정된 유형과 동일한 유형인 경우 <code>AssertionError</code>가 발생합니다. 오류 유형이 다른 경우 또는 오류 매개 변수가 정의되지 않은 경우 오류는 호출자에게 다시 전달됩니다.</p>
+        <p>예를 들어 다음과 같은경우에는 Assertion에 일치하는 오류 유형이 없기 때문에  <a href="errors.html#errors_class_typeerror"><code>TypeError</code></a>가 반환됩니다 :</p>
         <pre><code class="lang-js">assert.doesNotThrow(
   () =&gt; {
     throw new TypeError(&#39;Wrong value&#39;);
@@ -218,7 +217,7 @@ assert.deepStrictEqual({ a: 1 }, { a: &#39;1&#39; });
   SyntaxError
 );
 </code></pre>
-        <p>However, the following will result in an <code>AssertionError</code> with the message &#39;Got unwanted exception (TypeError)..&#39;:</p>
+        <p>그러나 다음은 '원치 않는 예외가 발생했습니다 (TypeError)'라는 메시지가있는 AssertionError가 발생합니다 :</p>
         <pre><code class="lang-js">assert.doesNotThrow(
   () =&gt; {
     throw new TypeError(&#39;Wrong value&#39;);
@@ -226,7 +225,7 @@ assert.deepStrictEqual({ a: 1 }, { a: &#39;1&#39; });
   TypeError
 );
 </code></pre>
-        <p>If an <code>AssertionError</code> is thrown and a value is provided for the <code>message</code> parameter, the value of <code>message</code> will be appended to the <code>AssertionError</code> message:
+        <p><code>AssertionError</code> 가 반환되고 message 매개 변수에 값이 제공되면 message 값이 AssertionError 메시지에 추가됩니다.
         </p>
         <pre><code class="lang-js">assert.doesNotThrow(
   () =&gt; {
@@ -246,7 +245,7 @@ assert.deepStrictEqual({ a: 1 }, { a: &#39;1&#39; });
           <li><code>expected</code> <span class="type">&lt;any&gt;</span></li>
           <li><code>message</code> <span class="type">&lt;any&gt;</span></li>
         </ul>
-        <p>Tests shallow, coercive equality between the <code>actual</code> and <code>expected</code> parameters using the equal comparison operator ( <code>==</code> ).</p>
+        <p>동일 비교 연산자 (==) 을 사용하여 실제 매개 변수와 예상 매개 변수 사이의 얕은 강제적인 동등성을 테스트합니다.</p>
         <pre><code class="lang-js">const assert = require(&#39;assert&#39;);
 
 assert.equal(1, 1);
@@ -259,8 +258,7 @@ assert.equal(1, 2);
 assert.equal({a: {b: 1}}, {a: {b: 1}});
 //AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 </code></pre>
-        <p>If the values are not equal, an <code>AssertionError</code> is thrown with a <code>message</code> property set equal to the value of the <code>message</code> parameter. If the <code>message</code> parameter is undefined, a default error message
-          is assigned.</p>
+        <p>값이 동일하지 않으면 메세지 매개 변수의 값과 동일한 메세지 등록 정보로 AssertionError가 발생합니다. 메세지 매개 변수가 정의되지 않은 경우 기본 오류 메세지가 지정됩니다.</p>
         <h2>assert.fail(actual, expected, message, operator)<span><a class="mark" href="#assert_assert_fail_actual_expected_message_operator" id="assert_assert_fail_actual_expected_message_operator">#</a></span></h2>
         <div class="api_metadata">
           <span>추가됨 : v0.1.21</span>
@@ -271,8 +269,7 @@ assert.equal({a: {b: 1}}, {a: {b: 1}});
           <li><code>message</code> <span class="type">&lt;any&gt;</span></li>
           <li><code>operator</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
         </ul>
-        <p>Throws an <code>AssertionError</code>. If <code>message</code> is falsy, the error message is set as the values of <code>actual</code> and <code>expected</code> separated by the provided <code>operator</code>. Otherwise, the error message is the
-          value of <code>message</code>.</p>
+        <p><code>AssertionError</code>을 반환합니다. 메세지 값이 거짓인 경우 오류 메세지는 제공된 연산자에 의해 분리된 실제값과 예상값으로 설정됩니다. 그렇지 않으면 오류 메세지가 기본값으로 설정됩니다.</p>
         <pre><code class="lang-js">const assert = require(&#39;assert&#39;);
 
 assert.fail(1, 2, undefined, &#39;&gt;&#39;);
@@ -385,7 +382,8 @@ assert.notEqual(1, &#39;1&#39;);
 // AssertionError: 1 != &#39;1&#39;
 </code></pre>
         <p>If the values are equal, an <code>AssertionError</code> is thrown with a <code>message</code> property set equal to the value of the <code>message</code> parameter. If the <code>message</code> parameter is undefined, a default error message is
-          assigned.</p>
+          assigned.
+        </p>
         <h2>assert.notStrictEqual(actual, expected[, message])<span><a class="mark" href="#assert_assert_notstrictequal_actual_expected_message" id="assert_assert_notstrictequal_actual_expected_message">#</a></span></h2>
         <div class="api_metadata">
           <span>추가됨 : v0.1.21</span>
